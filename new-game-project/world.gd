@@ -6,7 +6,7 @@ var spawn_area_contents = []
 
 @onready var block_spawner: Marker2D = $blockSpawner
 @onready var block_manager: Node2D = $blockManager
-@onready var piece = preload("res://scenes/piece.tscn")
+@onready var piece = preload("res://scenes/pieces/piece.tscn")
 @onready var spawn_area: Area2D = $spawnArea
 
 # Called when the node enters the scene tree for the first time.
@@ -39,7 +39,6 @@ func _on_piece_placed():
 
 func _on_spawn_area_body_entered(body: Node2D) -> void:
 	spawn_area_contents.append(body)
-
 
 
 func _on_spawn_area_body_exited(body: Node2D) -> void:
