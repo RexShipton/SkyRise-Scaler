@@ -24,6 +24,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		if scale.y > -.9 and scale.y < .9:
+			scale.y = scale.y * 1.5
 		if jump_available and coyote_timer.is_stopped():
 			coyote_timer.start()
 		animation_player.play("airborne")
@@ -37,7 +39,6 @@ func _physics_process(delta: float) -> void:
 			if scale.y < -.9 or scale.y > .9:
 				scale.y = scale.y / 1.5
 		if Input.get_action_strength("character_crouch") == 0 and scale.y > -.9 and scale.y < .9:
-			print("hit")
 			scale.y = scale.y * 1.5
 		if Input.get_axis("character_left", "character_right") == 0:
 			animation_player.play("idle")
