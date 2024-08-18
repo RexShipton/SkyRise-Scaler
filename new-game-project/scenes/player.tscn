@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dp122pt878tim"]
+[gd_scene load_steps=34 format=3 uid="uid://dp122pt878tim"]
 
 [ext_resource type="Texture2D" uid="uid://crnak2st0acmc" path="res://assets/Characters/1 Worker/Death.png" id="1_kdwuv"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ui1eo"]
@@ -226,8 +226,10 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_vx88i"]
-resource_name = "die"
+[sub_resource type="Animation" id="Animation_ytlko"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -238,7 +240,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Death"]
+"values": [&"Run"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -247,66 +249,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.366667, 0.533333, 0.666667, 0.933333),
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_aslum"]
-resource_name = "hurt"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Hurt"]
-}
-
-[sub_resource type="Animation" id="Animation_y1y4u"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5, 0.766667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjrao"]
@@ -315,18 +261,19 @@ _data = {
 "airborne": SubResource("Animation_v5bof"),
 "die": SubResource("Animation_vx88i"),
 "hurt": SubResource("Animation_aslum"),
-"idle": SubResource("Animation_y1y4u")
+"idle": SubResource("Animation_y1y4u"),
+"run": SubResource("Animation_ytlko")
 }
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ui1eo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(13, -16)
+position = Vector2(-2, -16)
 shape = SubResource("CapsuleShape2D_rams7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(24, -24)
+position = Vector2(9, -24)
 sprite_frames = SubResource("SpriteFrames_pk042")
 animation = &"Hurt"
 
@@ -335,3 +282,11 @@ libraries = {
 "": SubResource("AnimationLibrary_pjrao")
 }
 autoplay = "idle"
+
+[node name="JumpBufferTimer" type="Timer" parent="."]
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
