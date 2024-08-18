@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://e27tcmwbd3ke"]
+[gd_scene load_steps=11 format=4 uid="uid://e27tcmwbd3ke"]
 
 [ext_resource type="Texture2D" uid="uid://bsy417pvgfcuf" path="res://assets/BoardAtlas.png" id="1_c3tfi"]
 [ext_resource type="Script" path="res://world.gd" id="1_novwx"]
 [ext_resource type="PackedScene" uid="uid://dp122pt878tim" path="res://scenes/player.tscn" id="3_e5w51"]
+[ext_resource type="PackedScene" uid="uid://c3ivuprkcunht" path="res://scenes/hud.tscn" id="4_bkgi5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_diqox"]
 texture = ExtResource("1_c3tfi")
@@ -84,6 +85,8 @@ shape = SubResource("RectangleShape2D_hgluf")
 
 [node name="Player" parent="." instance=ExtResource("3_e5w51")]
 position = Vector2(56, 600)
+
+[node name="HUD" parent="." instance=ExtResource("4_bkgi5")]
 
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="spawnArea" to="." method="_on_spawn_area_body_entered"]
