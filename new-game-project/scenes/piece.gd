@@ -24,3 +24,9 @@ func _process(delta: float) -> void:
 		if velocity.y == 0:
 			isPlaced = true
 			piece_placed.emit()
+	
+	if Input.is_action_just_pressed("block_rotate"):
+		if !isPlaced:
+			self.rotation_degrees += 90
+			if rotation_degrees > 180:
+				rotation_degrees -= 360
