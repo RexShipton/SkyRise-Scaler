@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://6rhxybxf5y2d"]
+
+[ext_resource type="Script" path="res://ScoreResource.gd" id="1_ree4k"]
+
+[resource]
+script = ExtResource("1_ree4k")
+score = 200.0
