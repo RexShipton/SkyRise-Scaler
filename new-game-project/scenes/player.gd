@@ -106,6 +106,5 @@ func _on_jump_buffer_timer_timeout() -> void:
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
 
-
 func _on_death_area_2d_body_entered(body: Node2D) -> void:
 	Die()

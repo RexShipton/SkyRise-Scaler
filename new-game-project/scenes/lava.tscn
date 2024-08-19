@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0mlm2pdhrb1q"]
+
+[ext_resource type="Shader" path="res://scenes/lava.gdshader" id="1_fwxg5"]
+
+[sub_resource type="Gradient" id="Gradient_kwy45"]
+offsets = PackedFloat32Array(0, 0.352201, 0.672956, 0.81761, 0.924528, 0.993711)
+colors = PackedColorArray(0, 0, 0, 1, 0.256111, 0.0662526, 0.0662178, 1, 0.534475, 0.138252, 0.0398265, 1, 0.699988, 0.334138, 0.119736, 1, 0.962341, 0.562018, 0.349181, 1, 0.986371, 0.708612, 0.580404, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s11fj"]
+gradient = SubResource("Gradient_kwy45")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnklg"]
+size = Vector2(1180, 74)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukiat"]
+shader = ExtResource("1_fwxg5")
+shader_parameter/scrollAmount = Vector2(0.01, 0.02)
+shader_parameter/multiplierAmount = 0.018
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1u7v4"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_li0cw"]
+width = 1212
+height = 86
+seamless = true
+noise = SubResource("FastNoiseLite_1u7v4")
+
+[node name="Lava" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(1.125, 18.4375)
+texture = SubResource("GradientTexture2D_s11fj")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 13)
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fnklg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ukiat")
+position = Vector2(-1.99997, -4.52995e-06)
+texture = SubResource("NoiseTexture2D_li0cw")

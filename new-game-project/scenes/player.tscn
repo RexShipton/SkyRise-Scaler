@@ -378,8 +378,8 @@ autoplay = "idle"
 one_shot = true
 
 [node name="DeathArea2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 10
+collision_layer = 4
+collision_mask = 42
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea2D"]
 position = Vector2(-1, -17)
