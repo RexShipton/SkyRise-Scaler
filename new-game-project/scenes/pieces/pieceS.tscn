@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://1bv2faa3fd47"]
+[gd_scene load_steps=73 format=4 uid="uid://1bv2faa3fd47"]
 
 [ext_resource type="Script" path="res://scenes/piece.gd" id="1_0lfr3"]
 [ext_resource type="Texture2D" uid="uid://c5gr1u4tc73ih" path="res://assets/1 Tiles/IndustrialTile_55.png" id="2_jx0je"]
@@ -243,6 +243,12 @@ sources/31 = SubResource("TileSetAtlasSource_2nxq4")
 sources/32 = SubResource("TileSetAtlasSource_c3ts6")
 sources/33 = SubResource("TileSetAtlasSource_3f0r0")
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_c2ie4"]
+points = PackedVector2Array(32, 56, 32, -40, 128, -40, 128, -72, -64, -72, -64, 24, -128, 24, -128, 56)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_snfs0"]
+points = PackedVector2Array(32, 56, 32, -40, 128, -40, 128, -72, -64, -72, -64, 24, -128, 24, -128, 56)
+
 [node name="Piece" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0lfr3")
@@ -259,3 +265,22 @@ tile_set = SubResource("TileSet_u087o")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(32, 56, 32, -40, 128, -40, 128, -72, -64, -72, -64, 24, -128, 24, -128, 56)
+
+[node name="RightMarker" type="Marker2D" parent="."]
+position = Vector2(72, 0)
+
+[node name="LeftMarker" type="Marker2D" parent="."]
+position = Vector2(-112, 0)
+
+[node name="ShapeCast2DRight" type="ShapeCast2D" parent="."]
+visible = false
+rotation = 4.71239
+shape = SubResource("ConvexPolygonShape2D_c2ie4")
+target_position = Vector2(0.000182533, 72)
+collision_mask = 2
+
+[node name="ShapeCast2DLeft" type="ShapeCast2D" parent="."]
+rotation = 1.5708
+shape = SubResource("ConvexPolygonShape2D_snfs0")
+target_position = Vector2(0, 56)
+collision_mask = 2

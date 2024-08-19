@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://bj1fqwjroljou"]
+[gd_scene load_steps=75 format=4 uid="uid://bj1fqwjroljou"]
 
 [ext_resource type="Script" path="res://scenes/piece.gd" id="1_ubgxo"]
 [ext_resource type="Texture2D" uid="uid://c5gr1u4tc73ih" path="res://assets/1 Tiles/IndustrialTile_55.png" id="2_hecnt"]
@@ -249,24 +249,48 @@ size = Vector2(32, 382)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3m0j"]
 size = Vector2(32, 382)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2sek"]
+size = Vector2(140, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jb7x"]
+size = Vector2(140, 5)
+
 [node name="PieceTunnel" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ubgxo")
 
 [node name="Background" type="TileMapLayer" parent="."]
-position = Vector2(-128, -8)
+position = Vector2(-128, 0)
 tile_map_data = PackedByteArray("AAADAP3/CwAAAAAAADAEAP3/CwAAAAAAADADAAIACgAAAAAAAAAEAAIACgAAAAAAAAADAAEACwAAAAAAADAEAAEACwAAAAAAADADAAUACwAAAAAAAAAEAAUACwAAAAAAAAADAPv/CwAAAAAAAAAEAPv/CwAAAAAAAAADAP7/CwAAAAAAAAAEAP7/CwAAAAAAAAADAAQACwAAAAAAADAEAAQACwAAAAAAADADAPr/CwAAAAAAADAEAPr/CwAAAAAAADA=")
 tile_set = SubResource("TileSet_u087o")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
-position = Vector2(-128, -8)
+position = Vector2(-128, 0)
 tile_map_data = PackedByteArray("AAACAPr/HgAAAAAAAAAFAPr/HgAAAAAAAAACAPv/HwAAAAAAAAACAPz/HwAAAAAAAAACAP3/HwAAAAAAAAACAP7/HwAAAAAAAAACAP//HwAAAAAAAAACAAAAHwAAAAAAAAACAAEAHwAAAAAAAAACAAIAHwAAAAAAAAACAAMAHwAAAAAAAAACAAQAHwAAAAAAAAAFAPv/HwAAAAAAAAAFAPz/HwAAAAAAAAAFAP3/HwAAAAAAAAAFAP7/HwAAAAAAAAAFAP//HwAAAAAAAAAFAAAAHwAAAAAAAAAFAAEAHwAAAAAAAAAFAAIAHwAAAAAAAAAFAAMAHwAAAAAAAAAFAAQAHwAAAAAAAAAFAAUAIAAAAAAAAAACAAUAIAAAAAAAAAA=")
 tile_set = SubResource("TileSet_u087o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-48, -7)
+position = Vector2(-48, 0)
 shape = SubResource("RectangleShape2D_53etg")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(48, -7)
+position = Vector2(48, 0)
 shape = SubResource("RectangleShape2D_l3m0j")
+
+[node name="RightMarker" type="Marker2D" parent="."]
+position = Vector2(192, 0)
+
+[node name="LeftMarker" type="Marker2D" parent="."]
+position = Vector2(-192, 0)
+
+[node name="ShapeCast2DRight" type="ShapeCast2D" parent="."]
+rotation = 4.71239
+shape = SubResource("RectangleShape2D_g2sek")
+target_position = Vector2(0, 192)
+collision_mask = 2
+
+[node name="ShapeCast2DLeft" type="ShapeCast2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0jb7x")
+target_position = Vector2(0, 192)
+collision_mask = 2
