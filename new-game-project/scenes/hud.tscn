@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3ivuprkcunht"]
+[gd_scene load_steps=5 format=3 uid="uid://c3ivuprkcunht"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_y4rcl"]
 [ext_resource type="PackedScene" uid="uid://c51vx8iq5wpff" path="res://scenes/pause_manager.tscn" id="2_k57vt"]
 [ext_resource type="LabelSettings" uid="uid://djlreeuvaybhc" path="res://16pxLabelSettings.tres" id="3_oia73"]
+[ext_resource type="LabelSettings" uid="uid://c5s06bpxvxfy0" path="res://24pxLabelSettings.tres" id="4_de4ug"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y4rcl")
@@ -123,6 +124,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Center/GameOverPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Game Over!"
+label_settings = ExtResource("4_de4ug")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Center/GameOverPanel/MarginContainer/VBoxContainer"]
@@ -132,15 +134,19 @@ alignment = 1
 [node name="Label" type="Label" parent="Center/GameOverPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Final Score: "
+label_settings = ExtResource("3_oia73")
 
 [node name="GameOverScoreLabel" type="Label" parent="Center/GameOverPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "100 feet!"
+label_settings = ExtResource("3_oia73")
 
 [node name="GameOverMainMenuButton" type="Button" parent="Center/GameOverPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
 text = "Main Menu"
 
 [connection signal="pressed" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="_on_game_over_main_menu_button_pressed"]

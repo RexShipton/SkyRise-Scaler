@@ -1,30 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://e27tcmwbd3ke"]
+[gd_scene load_steps=9 format=4 uid="uid://e27tcmwbd3ke"]
 
-[ext_resource type="Texture2D" uid="uid://bsy417pvgfcuf" path="res://assets/BoardAtlas.png" id="1_c3tfi"]
 [ext_resource type="Script" path="res://world.gd" id="1_novwx"]
+[ext_resource type="TileSet" uid="uid://duauvrqv8jk" path="res://map_tileset.tres" id="2_rda4a"]
 [ext_resource type="PackedScene" uid="uid://dp122pt878tim" path="res://scenes/player.tscn" id="3_e5w51"]
 [ext_resource type="PackedScene" uid="uid://c3ivuprkcunht" path="res://scenes/hud.tscn" id="4_bkgi5"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_diqox"]
-texture = ExtResource("1_c3tfi")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_rmvwx"]
-tile_size = Vector2i(32, 32)
-sources/103 = SubResource("TileSetAtlasSource_diqox")
-tile_proxies/coords_level = [[91, Vector2i(0, 0)], [103, Vector2i(0, 0)], [92, Vector2i(0, 0)], [103, Vector2i(1, 0)], [93, Vector2i(0, 0)], [103, Vector2i(2, 0)], [94, Vector2i(0, 0)], [103, Vector2i(3, 0)], [95, Vector2i(0, 0)], [103, Vector2i(4, 0)], [96, Vector2i(0, 0)], [103, Vector2i(5, 0)], [97, Vector2i(0, 0)], [103, Vector2i(6, 0)], [98, Vector2i(0, 0)], [103, Vector2i(7, 0)], [99, Vector2i(0, 0)], [103, Vector2i(8, 0)], [100, Vector2i(0, 0)], [103, Vector2i(9, 0)], [101, Vector2i(0, 0)], [103, Vector2i(10, 0)], [102, Vector2i(0, 0)], [103, Vector2i(11, 0)]]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq13f"]
 size = Vector2(32, 640)
@@ -44,12 +23,12 @@ script = ExtResource("1_novwx")
 [node name="board" type="TileMapLayer" parent="."]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAABABMAZwALAAAAAAACABMAZwALAAAAAAADABMAZwALAAAAAAAEABMAZwALAAAAAAAFABMAZwALAAAAAAAGABMAZwALAAAAAAAHABMAZwALAAAAAAAIABMAZwALAAAAAAAJABMAZwALAAAAAAAAAAAAZwALAAAAAAAKABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAA=")
-tile_set = SubResource("TileSet_rmvwx")
+tile_set = ExtResource("2_rda4a")
 rendering_quadrant_size = 64
 
 [node name="active" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_set = SubResource("TileSet_rmvwx")
+tile_set = ExtResource("2_rda4a")
 
 [node name="blockSpawner" type="Marker2D" parent="."]
 position = Vector2(173, 0)
