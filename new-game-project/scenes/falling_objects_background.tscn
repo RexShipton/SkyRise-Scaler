@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cur2id0owx117"]
+
+[ext_resource type="Script" path="res://scenes/falling_objects_background.gd" id="1_6un8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8xm8"]
+size = Vector2(1542, 175)
+
+[node name="FallingObjectsBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6un8p")
+
+[node name="ObjectHolder" type="Node2D" parent="."]
+
+[node name="CollectorHitbox" type="Area2D" parent="."]
+position = Vector2(326, 887)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectorHitbox"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_r8xm8")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="CollectorHitbox" to="." method="_on_collector_hitbox_area_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
