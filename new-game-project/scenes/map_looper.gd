@@ -5,6 +5,8 @@ extends Node2D
 @onready var tile_map_layer_3: TileMapLayer = $TileMapLayer3
 @onready var tile_map_layer_base: TileMapLayer = $TileMapLayerBase
 
+@onready var score_updater: Timer = $ScoreUpdater
+
 var tileMaps : Array
 var tileHeight : float = 640
 var tileMapIndex : int = 0
@@ -29,6 +31,7 @@ func _process(delta: float) -> void:
 	if !active: return
 	
 	var dropSpeed : float = mapDropSpeed * delta
+	dropSpeed = clampf(dropSpeed, 0, 600)
 	
 	totalDistanceDropped += dropSpeed
 	
@@ -74,8 +77,11 @@ func activate() -> void:
 	active = true
 
 func deActivate() -> void:
-	gameOver = true
-	active = false
+	score_updater.stop()
+	
+	if ScoreManager.stopMapOnGameOver:
+		gameOver = true
+		active = false
 
 func _on_score_updater_timeout() -> void:
 	ScoreManager.scoreResource.change_score(totalDistanceDropped)

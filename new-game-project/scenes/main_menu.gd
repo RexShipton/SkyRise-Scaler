@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var high_score_label: Label = $Top/Panel/MarginContainer/Control/HBoxContainer/HighScoreLabel
 
 func _ready() -> void:
+	get_tree().paused = false
 	high_score_label.text = str(ScoreManager.scoreResource.highScore) + " feet!"
 
 func _on_play_button_pressed() -> void:

@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !isPlaced:
 		
 		velocity.y = fall_speed + (Input.get_action_strength("block_fast_fall") * fast_fall_speed)
