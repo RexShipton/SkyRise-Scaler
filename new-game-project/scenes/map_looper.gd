@@ -12,6 +12,7 @@ var tileMapIndex : int = 0
 var connectedPieces : Array
 
 var active : bool = false
+var gameOver : bool = false
 var totalDistanceDropped : float = 0
 
 ## Distance per second the whole map shifts down.
@@ -68,6 +69,8 @@ func add_piece(piece : Node) -> void:
 		activate()
 
 func activate() -> void:
+	if gameOver: return
+	
 	active = true
 
 func deActivate() -> void:

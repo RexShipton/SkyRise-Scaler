@@ -8,8 +8,6 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y4rcl")
 
-[node name="PauseManager" parent="." instance=ExtResource("2_k57vt")]
-
 [node name="TopRight" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 1
@@ -148,5 +146,8 @@ size_flags_horizontal = 4
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 20
 text = "Main Menu"
+
+[node name="PauseManager" parent="." instance=ExtResource("2_k57vt")]
+visible = false
 
 [connection signal="pressed" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="_on_game_over_main_menu_button_pressed"]
