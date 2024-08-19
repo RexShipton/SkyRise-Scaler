@@ -5,25 +5,28 @@ extends Node2D
 @onready var tile_map_layer_3: TileMapLayer = $TileMapLayer3
 @onready var tile_map_layer_base: TileMapLayer = $TileMapLayerBase
 
+var scoreResource = preload("res://ScoreResource.tres")
+
 var tileMaps : Array
 var tileHeight : float = 640
 var tileMapIndex : int = 0
 
+var active : bool = false
 var totalDistanceDropped : float = 0
 
 var mapDropSpeed : float = 10
 var speedIncreasePerSecond : float = .1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tileMaps.append(tile_map_layer_1)
 	tileMaps.append(tile_map_layer_2)
 	tileMaps.append(tile_map_layer_3)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !active: return
+	
 	totalDistanceDropped += mapDropSpeed * delta
+	scoreResource.change_score(totalDistanceDropped)
 	
 	if tile_map_layer_base.visible:
 		tile_map_layer_base.global_position.y += mapDropSpeed * delta
@@ -44,3 +47,9 @@ func _process(delta: float) -> void:
 		tileMaps[tileToMove].global_position.y = highestTileHeight - tileHeight
 	
 	mapDropSpeed += speedIncreasePerSecond * delta
+
+func activate() -> void:
+	active = true
+
+func deActivate() -> void:
+	active = false
