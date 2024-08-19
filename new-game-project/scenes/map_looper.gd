@@ -74,6 +74,7 @@ func activate() -> void:
 	active = true
 
 func deActivate() -> void:
+	gameOver = true
 	active = false
 
 func _on_score_updater_timeout() -> void:
