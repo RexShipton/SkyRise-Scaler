@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://e27tcmwbd3ke"]
+[gd_scene load_steps=11 format=4 uid="uid://e27tcmwbd3ke"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_novwx"]
 [ext_resource type="PackedScene" uid="uid://u84grsd473oa" path="res://scenes/map_looper.tscn" id="2_64qo5"]
 [ext_resource type="TileSet" uid="uid://duauvrqv8jk" path="res://map_tileset.tres" id="2_rda4a"]
 [ext_resource type="PackedScene" uid="uid://dp122pt878tim" path="res://scenes/player.tscn" id="3_e5w51"]
 [ext_resource type="PackedScene" uid="uid://c3ivuprkcunht" path="res://scenes/hud.tscn" id="4_bkgi5"]
+[ext_resource type="PackedScene" uid="uid://bbluroxxhgnbx" path="res://scenes/objects/barrel.tscn" id="6_7v22v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq13f"]
 size = Vector2(32, 640)
@@ -78,6 +79,18 @@ shape = SubResource("RectangleShape2D_hgluf")
 position = Vector2(56, 600)
 
 [node name="HUD" parent="." instance=ExtResource("4_bkgi5")]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("6_7v22v")]
+position = Vector2(115, 586)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("6_7v22v")]
+position = Vector2(136, 369)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("6_7v22v")]
+position = Vector2(245, 522)
+
+[node name="RigidBody2D4" parent="." instance=ExtResource("6_7v22v")]
+position = Vector2(185, 448)
 
 [connection signal="game_over" from="." to="MapLooper" method="deActivate"]
 [connection signal="game_over" from="." to="HUD" method="game_over"]

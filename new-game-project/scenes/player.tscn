@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dp122pt878tim"]
+[gd_scene load_steps=35 format=3 uid="uid://dp122pt878tim"]
 
 [ext_resource type="Texture2D" uid="uid://crnak2st0acmc" path="res://assets/Characters/1 Worker/Death.png" id="1_kdwuv"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ui1eo"]
@@ -348,8 +348,13 @@ _data = {
 "run": SubResource("Animation_ytlko")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_frgqc"]
+radius = 5.0
+height = 26.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 17
 script = ExtResource("1_ui1eo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -372,5 +377,14 @@ autoplay = "idle"
 [node name="CoyoteTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DeathArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea2D"]
+position = Vector2(-1, -17)
+shape = SubResource("CapsuleShape2D_frgqc")
+
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="body_entered" from="DeathArea2D" to="." method="_on_death_area_2d_body_entered"]

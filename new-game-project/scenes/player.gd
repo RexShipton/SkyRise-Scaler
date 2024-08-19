@@ -4,11 +4,12 @@ signal die
 
 var jump_buffer : bool = false
 var jump_available : bool = true
-
+var push_force = 80.0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var death_area_2d: Area2D = $DeathArea2D
 
 
 @export var SPEED = 300.0
@@ -25,7 +26,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if dead: return
 	
+	
+	
 	Check_OOB()
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -87,8 +95,17 @@ func Jump():
 	jump_buffer = false
 	jump_available = false
 
+func Die():
+	death_area_2d.set_deferred("monitoring", false)
+	dead = true
+	animation_player.play("die")
+
 func _on_jump_buffer_timer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
+
+
+func _on_death_area_2d_body_entered(body: Node2D) -> void:
+	Die()
