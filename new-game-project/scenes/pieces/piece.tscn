@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://djwgklghoq58w"]
+[gd_scene load_steps=77 format=4 uid="uid://djwgklghoq58w"]
 
 [ext_resource type="Script" path="res://scenes/piece.gd" id="1_4n6si"]
 [ext_resource type="Texture2D" uid="uid://ddjgi0le0qoc" path="res://assets/1 Tiles/IndustrialTile_63.png" id="1_7mm46"]
@@ -249,13 +249,16 @@ size = Vector2(256, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hltcd"]
 size = Vector2(256, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jmem"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dri3"]
 size = Vector2(128, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wya3w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8nnj"]
 size = Vector2(128, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5dp5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xiep"]
+size = Vector2(140, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxhjj"]
 size = Vector2(140, 5)
 
 [node name="Piece" type="CharacterBody2D"]
@@ -290,7 +293,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RotationRight"]
 position = Vector2(-64, 8)
-shape = SubResource("RectangleShape2D_0jmem")
+shape = SubResource("RectangleShape2D_4dri3")
 
 [node name="RotationLeft" type="Area2D" parent="."]
 visible = false
@@ -300,7 +303,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RotationLeft"]
 position = Vector2(-8.00002, 64)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_wya3w")
+shape = SubResource("RectangleShape2D_j8nnj")
 
 [node name="RightMarker" type="Marker2D" parent="."]
 position = Vector2(0, -128)
@@ -310,11 +313,11 @@ position = Vector2(0, 128)
 
 [node name="ShapeCast2DRight" type="ShapeCast2D" parent="."]
 rotation = -3.14159
-shape = SubResource("RectangleShape2D_c5dp5")
+shape = SubResource("RectangleShape2D_2xiep")
 target_position = Vector2(2.49225e-05, 128)
 collision_mask = 2
 
 [node name="ShapeCast2DLeft" type="ShapeCast2D" parent="."]
-shape = SubResource("RectangleShape2D_c5dp5")
+shape = SubResource("RectangleShape2D_xxhjj")
 target_position = Vector2(5.59506e-06, 128)
 collision_mask = 2

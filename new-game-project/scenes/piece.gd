@@ -8,8 +8,8 @@ var isPlaced : bool = false
 
 signal piece_placed
 
-@onready var rotation_right: Area2D = $RotationRight
-@onready var rotation_left: Area2D = $RotationLeft
+#@onready var rotation_right: Area2D = $RotationRight
+#@onready var rotation_left: Area2D = $RotationLeft
 @onready var right_marker: Marker2D = $RightMarker
 @onready var left_marker: Marker2D = $LeftMarker
 
@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 #	50 60 70     -10 0 10  10  
 	if Input.is_action_just_pressed("block_rotate"):
 		if !isPlaced:
-			if rotation_right.has_overlapping_bodies() and rotation_left.has_overlapping_bodies():
+			if shape_cast_2d_right.is_colliding() and shape_cast_2d_left.is_colliding():
 				print("both hit")
 				return
 			if shape_cast_2d_left.is_colliding():
