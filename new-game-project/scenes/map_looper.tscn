@@ -21,6 +21,8 @@ tile_set = ExtResource("1_750w0")
 position = Vector2(0, 640)
 
 [node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayer1"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer1/LEFTStaticBody2D"]
 position = Vector2(16, 320)
@@ -28,6 +30,8 @@ shape = SubResource("RectangleShape2D_naqr5")
 
 [node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayer1"]
 position = Vector2(320, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer1/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
@@ -42,6 +46,8 @@ tile_set = ExtResource("1_750w0")
 position = Vector2(0, 640)
 
 [node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayer2"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer2/LEFTStaticBody2D"]
 position = Vector2(16, 320)
@@ -49,6 +55,8 @@ shape = SubResource("RectangleShape2D_naqr5")
 
 [node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayer2"]
 position = Vector2(320, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer2/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
@@ -63,6 +71,8 @@ tile_set = ExtResource("1_750w0")
 position = Vector2(0, 640)
 
 [node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayer3"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer3/LEFTStaticBody2D"]
 position = Vector2(16, 320)
@@ -70,6 +80,8 @@ shape = SubResource("RectangleShape2D_naqr5")
 
 [node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayer3"]
 position = Vector2(320, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer3/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
@@ -80,6 +92,8 @@ tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAA
 tile_set = ExtResource("1_750w0")
 
 [node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayerBase"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerBase/LEFTStaticBody2D"]
 position = Vector2(16, 320)
@@ -87,6 +101,8 @@ shape = SubResource("RectangleShape2D_naqr5")
 
 [node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayerBase"]
 position = Vector2(320, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerBase/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
@@ -94,7 +110,15 @@ shape = SubResource("RectangleShape2D_naqr5")
 
 [node name="BOTTOMStaticBody2D" type="StaticBody2D" parent="TileMapLayerBase"]
 position = Vector2(32, 608)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerBase/BOTTOMStaticBody2D"]
 position = Vector2(144, 16)
 shape = SubResource("RectangleShape2D_xri7q")
+
+[node name="ScoreUpdater" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="ScoreUpdater" to="." method="_on_score_updater_timeout"]

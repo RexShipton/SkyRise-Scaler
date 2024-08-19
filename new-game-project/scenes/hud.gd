@@ -3,14 +3,13 @@ extends CanvasLayer
 @onready var score_label: Label = $TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer2/ScoreLabel
 @onready var game_over_score_label: Label = $Center/GameOverPanel/MarginContainer/VBoxContainer/HBoxContainer/GameOverScoreLabel
 @onready var game_over_panel: Panel = $Center/GameOverPanel
-var scoreResource = preload("res://ScoreResource.tres")
 
 func _ready() -> void:
 	update_score()
-	scoreResource.changed.connect(update_score)
+	ScoreManager.scoreResource.changed.connect(update_score)
 
 func update_score() -> void:
-	var score_text = str(scoreResource.score) + " feet!"
+	var score_text = str(ScoreManager.scoreResource.score) + " feet!"
 	score_label.text = score_text
 	game_over_score_label.text = score_text
 

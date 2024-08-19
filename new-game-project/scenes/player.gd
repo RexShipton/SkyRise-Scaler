@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+signal die
 
 var jump_buffer : bool = false
 var jump_available : bool = true
@@ -16,12 +16,17 @@ var jump_available : bool = true
 @export var Jump_Buffer_Time : float = .1
 @export var Coyote_Time: float = .1
 
+var dead : bool = false
 
 func _ready() -> void:
 	jump_buffer_timer.wait_time = Jump_Buffer_Time
 	coyote_timer.wait_time = Coyote_Time
 
 func _physics_process(delta: float) -> void:
+	if dead: return
+	
+	Check_OOB()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		if scale.y > -.9 and scale.y < .9:
@@ -69,6 +74,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
+
+func Check_OOB() -> void:
+	if global_position.x < -10 \
+	or global_position.x > 352 \
+	or global_position.y > 780:
+		dead = true
+		die.emit()
 
 func Jump():
 	velocity.y = JUMP_VELOCITY

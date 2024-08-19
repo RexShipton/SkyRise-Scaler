@@ -1,5 +1,9 @@
 extends Node2D
 
+signal piece_placed(node : Node)
+signal game_over
+
+var active : bool = true
 var has_falling_block : bool = false
 var active_block
 var spawn_area_contents = []
@@ -16,6 +20,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !active: return
+	
 	if !has_falling_block and spawn_area_contents.size() <= 0:
 		has_falling_block = true
 		var new_block = piece.instantiate()
@@ -26,6 +32,7 @@ func _process(delta: float) -> void:
 	
 
 func _on_piece_placed():
+	piece_placed.emit(active_block)
 	has_falling_block = false
 	active_block = null
 
@@ -40,6 +47,9 @@ func _on_piece_placed():
 func _on_spawn_area_body_entered(body: Node2D) -> void:
 	spawn_area_contents.append(body)
 
-
 func _on_spawn_area_body_exited(body: Node2D) -> void:
 	spawn_area_contents.erase(body)
+
+func _on_player_die() -> void:
+	active = false
+	game_over.emit()

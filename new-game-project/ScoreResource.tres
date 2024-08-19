@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_ree4k")
-score = 200.0
+score = 0.0
+highScore = 0.0
