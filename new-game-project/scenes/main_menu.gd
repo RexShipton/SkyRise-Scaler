@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var high_score_label: Label = $Top/Panel/MarginContainer/HBoxContainer/HighScoreLabel
+@onready var high_score_label: Label = $Top/Panel/MarginContainer/Control/HBoxContainer/HighScoreLabel
 var SCORE_RESOURCE = preload("res://ScoreResource.tres")
 
 func _ready() -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3ivuprkcunht"]
+[gd_scene load_steps=4 format=3 uid="uid://c3ivuprkcunht"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_y4rcl"]
 [ext_resource type="PackedScene" uid="uid://c51vx8iq5wpff" path="res://scenes/pause_manager.tscn" id="2_k57vt"]
+[ext_resource type="LabelSettings" uid="uid://djlreeuvaybhc" path="res://16pxLabelSettings.tres" id="3_oia73"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y4rcl")
@@ -49,6 +50,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Next:"
+label_settings = ExtResource("3_oia73")
 
 [node name="NextTileHolder" type="Control" parent="TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
@@ -61,10 +63,12 @@ alignment = 1
 [node name="Label" type="Label" parent="TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Score: "
+label_settings = ExtResource("3_oia73")
 
 [node name="ScoreLabel" type="Label" parent="TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "100 feet!"
+label_settings = ExtResource("3_oia73")
 
 [node name="Label" type="Label" parent="TopRight/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(6.9, 5.66)
@@ -72,6 +76,7 @@ layout_mode = 2
 text = "CONTROLS:
 WASD to move player.
 Arrow keys to move platforms."
+label_settings = ExtResource("3_oia73")
 autowrap_mode = 2
 
 [node name="Center" type="Control" parent="."]

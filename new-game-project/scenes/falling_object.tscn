@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2f41huai43ev"]
+
+[ext_resource type="Texture2D" uid="uid://qbs52rxw0doj" path="res://assets/3 Objects/Box8.png" id="1_u3x8y"]
+[ext_resource type="Script" path="res://scenes/falling_object.gd" id="2_haece"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnjyv"]
+
+[node name="FallingObject" type="Sprite2D"]
+texture = ExtResource("1_u3x8y")
+script = ExtResource("2_haece")
+textures = ["res://assets/3 Objects/Locker4.png", "res://assets/3 Objects/Mop.png", "res://assets/3 Objects/Pointer1.png", "res://assets/3 Objects/Locker3.png", "res://assets/3 Objects/Ladder1.png", "res://assets/3 Objects/Fire-extinguisher1.png", "res://assets/3 Objects/Box8.png", "res://assets/3 Objects/Box1.png", "res://assets/3 Objects/Barrel1.png", "res://assets/3 Objects/Board3.png"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vnjyv")
