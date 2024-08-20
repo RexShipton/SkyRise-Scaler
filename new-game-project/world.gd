@@ -33,6 +33,7 @@ var next_piece
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	next_piece = get_random_piece(pieces).instantiate()
 	next_piece.isPlaced = true
 	sub_viewport.add_child(next_piece)

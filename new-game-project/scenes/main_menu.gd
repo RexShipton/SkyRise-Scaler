@@ -9,6 +9,7 @@ extends CanvasLayer
 func _ready() -> void:
 	get_tree().paused = false
 	high_score_label.text = str(ScoreManager.scoreResource.highScore) + " feet!"
+	MusicStreamer.start_playing_music()
 
 func _on_play_button_pressed() -> void:
 	ScoreManager.scoreResource.score = 0
