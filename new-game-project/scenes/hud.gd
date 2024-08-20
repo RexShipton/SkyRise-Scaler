@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var switch_sound: AudioStreamPlayer = $SwitchSound
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var game_over_main_menu_button: Button = $Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton
+@onready var next_tile_texture: TextureRect = $TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer/NextTileHolder/TextureRect
 
 func _ready() -> void:
 	update_score()
@@ -16,9 +17,8 @@ func update_score() -> void:
 	score_label.text = score_text
 	game_over_score_label.text = score_text
 
-func update_tile(_tile : int) -> void:
-	# This would be dependent on some stuff.
-	pass
+func update_tile(tileTexture : Texture) -> void:
+	next_tile_texture.texture = tileTexture
 
 func game_over() -> void:
 	game_over_panel.visible = true

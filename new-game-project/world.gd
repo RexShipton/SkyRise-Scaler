@@ -2,11 +2,13 @@ extends Node2D
 
 signal piece_placed(node : Node)
 signal game_over
+signal next_piece_picked(tex : Texture)
 
 var active : bool = true
 var has_falling_block : bool = false
 var active_block
 var spawn_area_contents = []
+var next_piece
 
 @onready var block_spawner: Marker2D = $blockSpawner
 @onready var block_manager: Node2D = $blockManager
@@ -17,6 +19,7 @@ var spawn_area_contents = []
 @onready var PIECE_BLOCK = preload("res://scenes/pieces/piece_block.tscn")
 @onready var PIECE_TUNNEL = preload("res://scenes/pieces/piece_tunnel.tscn")
 @onready var item_manager: Node2D = $itemManager
+@onready var sub_viewport: SubViewport = $SubViewport
 
 @onready var pieces = [
 	preload("res://scenes/pieces/piece.tscn"),
@@ -30,7 +33,9 @@ var spawn_area_contents = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	next_piece = get_random_piece(pieces).instantiate()
+	next_piece.isPlaced = true
+	sub_viewport.add_child(next_piece)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,11 +44,19 @@ func _process(_delta: float) -> void:
 	
 	if !has_falling_block and spawn_area_contents.size() <= 0:
 		has_falling_block = true
-		var new_block = get_random_piece(pieces).instantiate()
+		var new_block = next_piece
+		new_block.isPlaced = false
+		new_block.reparent(block_manager)
 		new_block.global_position = block_spawner.global_position
-		block_manager.add_child(new_block)
+		#block_manager.add_child(new_block)
 		active_block = new_block
 		active_block.piece_placed.connect(_on_piece_placed)
+		
+		next_piece = get_random_piece(pieces).instantiate()
+		next_piece.isPlaced = true
+		sub_viewport.add_child(next_piece)
+		next_piece.global_position = Vector2(sub_viewport.size.x / 2, sub_viewport.size.y / 2)
+		next_piece_picked.emit(sub_viewport.get_texture())
 
 
 func add_item_to_world(body):
