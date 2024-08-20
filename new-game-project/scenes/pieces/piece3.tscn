@@ -210,7 +210,7 @@ shape = SubResource("RectangleShape2D_4h0g0")
 position = Vector2(104, 0)
 
 [node name="LeftMarker" type="Marker2D" parent="."]
-position = Vector2(-104, 0)
+position = Vector2(-88, 0)
 
 [node name="ShapeCast2DRight" type="ShapeCast2D" parent="."]
 rotation = 4.71239
@@ -222,5 +222,16 @@ collision_mask = 2
 position = Vector2(-16, 0)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_f7jmu")
-target_position = Vector2(0, 86)
+target_position = Vector2(0.000260639, 72)
 collision_mask = 2
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-58, 34)
+
+[node name="Marker2D2" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(4, 36)
+
+[node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(12, -126)

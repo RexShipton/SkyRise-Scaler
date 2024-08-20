@@ -294,3 +294,14 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_0jb7x")
 target_position = Vector2(0, 192)
 collision_mask = 2
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-52, -216)
+
+[node name="Marker2D2" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(50, -216)
+
+[node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-52, -216)

@@ -2,34 +2,50 @@
 
 [ext_resource type="Script" path="res://scenes/objects/barrel.gd" id="1_ekwb5"]
 [ext_resource type="Texture2D" uid="uid://b8lbfgjo5q7e3" path="res://assets/3 Objects/Barrel1.png" id="1_gsjl0"]
+[ext_resource type="PackedScene" uid="uid://bj64d0ywp3xib" path="res://scenes/objects/crush_node.tscn" id="3_ir4gp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_113su"]
-radius = 8.0
-height = 22.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riube"]
-radius = 5.0
-height = 14.0
+radius = 7.0
+height = 20.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
-collision_layer = 20
+collision_layer = 16
 collision_mask = 21
 mass = 10.0
 script = ExtResource("1_ekwb5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.888889, 0.884615)
 texture = ExtResource("1_gsjl0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_113su")
 
-[node name="DeathArea2D" type="Area2D" parent="."]
+[node name="CrushNode" parent="." instance=ExtResource("3_ir4gp")]
+position = Vector2(0, -3)
+
+[node name="Top" parent="CrushNode" index="0"]
+visible = false
+position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 10
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea2D"]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_riube")
+[node name="CollisionShape2D" parent="CrushNode/Top" index="0"]
+position = Vector2(0, 0)
 
-[connection signal="body_entered" from="DeathArea2D" to="." method="_on_death_area_2d_body_entered"]
+[node name="Bottom" parent="CrushNode" index="1"]
+visible = false
+position = Vector2(0, 12)
+collision_layer = 0
+collision_mask = 10
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="CrushNode/Bottom" index="0"]
+position = Vector2(0, 0)
+
+[editable path="CrushNode"]

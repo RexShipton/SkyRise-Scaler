@@ -358,38 +358,46 @@ size = Vector2(140, 5)
 size = Vector2(140, 5)
 
 [node name="PieceBlock" type="CharacterBody2D"]
-position = Vector2(8, 12)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_p625l")
 
 [node name="Background" type="TileMapLayer" parent="."]
-position = Vector2(-128, -8)
+position = Vector2(-112, 16)
 tile_set = SubResource("TileSet_plixp")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
-position = Vector2(-128, -8)
+position = Vector2(-112, 16)
 tile_map_data = PackedByteArray("AAABAP3/EQAAAAAAAAABAP7/FgAAAAAAAAABAP//FgAAAAAAAAABAAAAFgAAAAAAAAABAAEAGgAAAAAAAAACAP3/EgAAAAAAAAACAP7/BwAAAAAAAAACAP//BwAAAAAAAAACAAAABwAAAAAAAAACAAEAGwAAAAAAAAADAP3/EgAAAAAAAAADAP7/BwAAAAAAAAADAP//BwAAAAAAAAADAAAABwAAAAAAAAADAAEAGwAAAAAAAAAEAP3/EgAAAAAAAAAEAP7/BwAAAAAAAAAEAP//BwAAAAAAAAAEAAAABwAAAAAAAAAEAAEAGwAAAAAAAAAFAP3/EwAAAAAAAAAFAP7/GAAAAAAAAAAFAP//GAAAAAAAAAAFAAAAGAAAAAAAAAAFAAEAHAAAAAAAAAA=")
 tile_set = SubResource("TileSet_u087o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -24)
 shape = SubResource("RectangleShape2D_yjopq")
 
 [node name="RightMarker" type="Marker2D" parent="."]
-position = Vector2(-16, -102)
+position = Vector2(0, -78)
 
 [node name="LeftMarker" type="Marker2D" parent="."]
-position = Vector2(-16, 54)
+position = Vector2(0, 78)
 
 [node name="ShapeCast2DRight" type="ShapeCast2D" parent="."]
-position = Vector2(-16, -24)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_4gowl")
 target_position = Vector2(0.000187603, 74)
 collision_mask = 2
 
 [node name="ShapeCast2DLeft" type="ShapeCast2D" parent="."]
-position = Vector2(-16, -24)
 shape = SubResource("RectangleShape2D_8jscq")
 target_position = Vector2(0, 74)
 collision_mask = 2
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+position = Vector2(20, -8)
+
+[node name="Marker2D" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-80, -86)
+
+[node name="Marker2D2" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(34, -90)
+
+[node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-40, -88)

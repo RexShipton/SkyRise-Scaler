@@ -321,3 +321,14 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_xxhjj")
 target_position = Vector2(5.59506e-06, 128)
 collision_mask = 2
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-96, 8)
+
+[node name="Marker2D2" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(0, 8)
+
+[node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-44, -84)

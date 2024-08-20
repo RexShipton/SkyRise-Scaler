@@ -100,11 +100,15 @@ func Die():
 	dead = true
 	animation_player.play("die")
 
+func ApplyForce(force_added):
+	velocity += force_added
+
 func _on_jump_buffer_timer_timeout() -> void:
 	jump_buffer = false
 
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
+
 
 
 func _on_death_area_2d_body_entered(body: Node2D) -> void:

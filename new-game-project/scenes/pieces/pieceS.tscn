@@ -243,44 +243,54 @@ sources/31 = SubResource("TileSetAtlasSource_2nxq4")
 sources/32 = SubResource("TileSetAtlasSource_c3ts6")
 sources/33 = SubResource("TileSetAtlasSource_3f0r0")
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_c2ie4"]
-points = PackedVector2Array(32, 56, 32, -40, 128, -40, 128, -72, -64, -72, -64, 24, -128, 24, -128, 56)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdxp5"]
+size = Vector2(125, 10)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_snfs0"]
-points = PackedVector2Array(32, 56, 32, -40, 128, -40, 128, -72, -64, -72, -64, 24, -128, 24, -128, 56)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mghpc"]
+size = Vector2(125, 10)
 
 [node name="Piece" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0lfr3")
 
 [node name="Background" type="TileMapLayer" parent="."]
-position = Vector2(-128, -8)
+position = Vector2(-127.2, 0.400002)
 tile_map_data = PackedByteArray("AAAAAAEABwAAAAAAAAABAAEABwAAAAAAAAACAP7/FgAAAAAAAAADAP7/BwAAAAAAAAAEAP7/BwAAAAAAAAAFAP7/BwAAAAAAAAAGAP7/BwAAAAAAAAAHAP7/BwAAAAAAAAA=")
 tile_set = SubResource("TileSet_u087o")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
-position = Vector2(-128, -8)
+position = Vector2(-127.2, 0.400002)
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAACAAAAHwAAAAAAAAADAAAABwAAAAAAAAACAP//HwAAAAAAAAADAP//BwAAAAAAAAACAP7/HQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAFAP7/AQAAAAAAAAAGAP7/AQAAAAAAAAAHAP7/AgAAAAAAAAAEAP//HwAAAAAAAAAEAAAAHwAAAAAAAAAEAAEAIAAAAAAAAAA=")
 tile_set = SubResource("TileSet_u087o")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.800003, 8.4)
 polygon = PackedVector2Array(32, 56, 32, -40, 128, -40, 128, -72, -64, -72, -64, 24, -128, 24, -128, 56)
 
 [node name="RightMarker" type="Marker2D" parent="."]
-position = Vector2(72, 0)
+position = Vector2(0, -128)
 
 [node name="LeftMarker" type="Marker2D" parent="."]
-position = Vector2(-112, 0)
+position = Vector2(0, 126)
 
 [node name="ShapeCast2DRight" type="ShapeCast2D" parent="."]
-visible = false
-rotation = 4.71239
-shape = SubResource("ConvexPolygonShape2D_c2ie4")
-target_position = Vector2(0.000182533, 72)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_rdxp5")
+target_position = Vector2(0.000119734, 124)
 collision_mask = 2
 
 [node name="ShapeCast2DLeft" type="ShapeCast2D" parent="."]
-rotation = 1.5708
-shape = SubResource("ConvexPolygonShape2D_snfs0")
-target_position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_mghpc")
+target_position = Vector2(0.000441639, 122)
 collision_mask = 2
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-98, 12)
+
+[node name="Marker2D2" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(96, -82)
+
+[node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
+position = Vector2(-44, -84)

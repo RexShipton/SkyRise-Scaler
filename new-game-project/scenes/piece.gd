@@ -6,6 +6,8 @@ var isPlaced : bool = false
 @export var fall_speed : int = 40
 @export var fast_fall_speed : int = 200
 
+
+
 signal piece_placed
 
 #@onready var rotation_right: Area2D = $RotationRight
@@ -15,11 +17,19 @@ signal piece_placed
 
 @onready var shape_cast_2d_left: ShapeCast2D = $ShapeCast2DLeft
 @onready var shape_cast_2d_right: ShapeCast2D = $ShapeCast2DRight
+@onready var item_spawns: Node2D = $ItemSpawns
+
+@onready var barrel = preload("res://scenes/objects/barrel.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var spawnList = item_spawns.get_children()
+	var itemSpawnPoint = spawnList[randi() % spawnList.size()]
+	var new_item = barrel.instantiate()
+	new_item.global_position = itemSpawnPoint.global_position
+	get_node("/root/World/itemManager").add_child(new_item)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
