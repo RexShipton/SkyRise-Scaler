@@ -237,11 +237,13 @@ offset_left = 674.0
 offset_top = 465.0
 offset_right = 842.0
 offset_bottom = 627.0
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="LevelAnimator"]
 layout_mode = 2
 offset_right = 168.0
 offset_bottom = 162.0
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="LevelAnimator/Panel"]
 layout_mode = 1
@@ -250,6 +252,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -257,6 +260,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelAnimator/Panel/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="LevelAnimator/Panel/MarginContainer/VBoxContainer"]
 visible = false
@@ -266,6 +270,7 @@ text = "Now Entering..."
 [node name="RichLevelTextLabel" type="RichTextLabel" parent="LevelAnimator/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+mouse_filter = 2
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/italics_font_size = 24
 bbcode_enabled = true

@@ -33,6 +33,7 @@ var totalDistanceDropped : float = 0
 @export var speedIncreasePerSecond : float = .1
 
 func _ready() -> void:
+	ScoreManager.scoreResource.change_map_speed(mapDropSpeed)
 	tileMaps.append(tile_map_layer_1)
 	tileMaps.append(tile_map_layer_2)
 	tileMaps.append(tile_map_layer_3)

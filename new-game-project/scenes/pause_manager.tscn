@@ -97,8 +97,8 @@ volume_db = -15.0
 
 [connection signal="focus_entered" from="Center/Panel/MarginContainer/VBoxContainer/UnpauseButton" to="." method="play_switch_sound"]
 [connection signal="mouse_entered" from="Center/Panel/MarginContainer/VBoxContainer/UnpauseButton" to="." method="_on_unpause_button_mouse_entered"]
-[connection signal="pressed" from="Center/Panel/MarginContainer/VBoxContainer/UnpauseButton" to="." method="play_click_sound"]
 [connection signal="pressed" from="Center/Panel/MarginContainer/VBoxContainer/UnpauseButton" to="." method="_on_unpause_button_pressed"]
+[connection signal="pressed" from="Center/Panel/MarginContainer/VBoxContainer/UnpauseButton" to="." method="play_click_sound"]
 [connection signal="focus_entered" from="Center/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="play_switch_sound"]
 [connection signal="mouse_entered" from="Center/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="Center/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="play_click_sound"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var isPlaced : bool = false
+var isPlaced : bool = true
 @export var move_speed : int = 200
 @export var fall_speed : int = 20
 @export var fast_fall_speed : int = 200
