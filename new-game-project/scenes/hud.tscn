@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ivuprkcunht"]
+[gd_scene load_steps=10 format=3 uid="uid://c3ivuprkcunht"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_y4rcl"]
 [ext_resource type="PackedScene" uid="uid://c51vx8iq5wpff" path="res://scenes/pause_manager.tscn" id="2_k57vt"]
@@ -6,6 +6,43 @@
 [ext_resource type="LabelSettings" uid="uid://c5s06bpxvxfy0" path="res://24pxLabelSettings.tres" id="4_de4ug"]
 [ext_resource type="AudioStream" uid="uid://b5td44yj4blkb" path="res://sounds/click.wav" id="5_wavpm"]
 [ext_resource type="AudioStream" uid="uid://btfxxodd8rhk7" path="res://sounds/switch.wav" id="6_2w2a0"]
+
+[sub_resource type="Animation" id="Animation_cgfk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(674, 465)]
+}
+
+[sub_resource type="Animation" id="Animation_qprsr"]
+resource_name = "play"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 3.46667, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(674, 465), Vector2(480, 465), Vector2(440, 465), Vector2(440, 465), Vector2(480, 465), Vector2(674, 465)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kx8yd"]
+_data = {
+"RESET": SubResource("Animation_cgfk3"),
+"play": SubResource("Animation_qprsr")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y4rcl")
@@ -15,8 +52,8 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -242.0
-offset_bottom = 324.0
+offset_left = -232.0
+offset_bottom = 358.0
 grow_horizontal = 0
 mouse_filter = 2
 
@@ -55,7 +92,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Next:"
+text = "  Next:"
 label_settings = ExtResource("3_oia73")
 
 [node name="NextTileHolder" type="Control" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -72,6 +109,20 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Level:"
+label_settings = ExtResource("3_oia73")
+
+[node name="LevelLabel" type="Label" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "1!"
+label_settings = ExtResource("3_oia73")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -86,6 +137,9 @@ layout_mode = 2
 text = "100 feet!"
 label_settings = ExtResource("3_oia73")
 
+[node name="Spacer" type="Control" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="Label" type="Label" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(6.9, 5.66)
 layout_mode = 2
@@ -93,6 +147,7 @@ text = "CONTROLS:
 WASD to move player.
 Arrow keys to move platforms."
 label_settings = ExtResource("3_oia73")
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Center" type="Control" parent="."]
@@ -174,6 +229,54 @@ volume_db = -5.0
 [node name="SwitchSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_2w2a0")
 volume_db = -15.0
+
+[node name="LevelAnimator" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 674.0
+offset_top = 465.0
+offset_right = 842.0
+offset_bottom = 627.0
+
+[node name="Panel" type="Panel" parent="LevelAnimator"]
+layout_mode = 2
+offset_right = 168.0
+offset_bottom = 162.0
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelAnimator/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelAnimator/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelAnimator/Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Now Entering..."
+
+[node name="RichLevelTextLabel" type="RichTextLabel" parent="LevelAnimator/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/italics_font_size = 24
+bbcode_enabled = true
+text = "[wave amp=40.0 freq=5.0][i][center][rainbow]Now Entering Level 1!"
+fit_content = true
+scroll_active = false
+
+[node name="LevelAnimationPlayer" type="AnimationPlayer" parent="LevelAnimator"]
+libraries = {
+"": SubResource("AnimationLibrary_kx8yd")
+}
 
 [connection signal="focus_entered" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="play_switch_sound"]
 [connection signal="mouse_entered" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="_on_game_over_main_menu_button_mouse_entered"]
