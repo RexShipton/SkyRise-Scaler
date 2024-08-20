@@ -31,108 +31,111 @@ offset_right = 663.0
 offset_bottom = 721.0
 color = Color(0.41, 0.41, 0.41, 0.231373)
 
-[node name="TileMapLayer1" type="TileMapLayer" parent="."]
+[node name="ForegroundTilemapHolder" type="Node2D" parent="."]
+position = Vector2(32, 0)
+
+[node name="TileMapLayer1" type="TileMapLayer" parent="ForegroundTilemapHolder"]
 position = Vector2(0, -640)
 tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAABMAZwALAAAAAAAAABIAZwALAAAAAAAAABEAZwALAAAAAAAAABAAZwALAAAAAAAAAA8AZwALAAAAAAAAAA4AZwALAAAAAAAAAA0AZwALAAAAAAAAAAwAZwALAAAAAAAAAAsAZwALAAAAAAAAAAoAZwALAAAAAAAAAAkAZwALAAAAAAAKAAAAZwALAAAAAAAKAAEAZwALAAAAAAAKAAIAZwALAAAAAAAKAAMAZwALAAAAAAAKAAQAZwALAAAAAAAKAAUAZwALAAAAAAAKAAYAZwALAAAAAAAKAAcAZwALAAAAAAAKAAgAZwALAAAAAAAKAAkAZwALAAAAAAAKAAoAZwALAAAAAAAKAAsAZwALAAAAAAAKAAwAZwALAAAAAAAKAA0AZwALAAAAAAAKAA4AZwALAAAAAAAKAA8AZwALAAAAAAAKABAAZwALAAAAAAAKABEAZwALAAAAAAAKABIAZwALAAAAAAAKABMAZwALAAAAAAA=")
 tile_set = ExtResource("1_750w0")
 
-[node name="Marker2D" type="Marker2D" parent="TileMapLayer1"]
+[node name="Marker2D" type="Marker2D" parent="ForegroundTilemapHolder/TileMapLayer1"]
 position = Vector2(0, 640)
 
-[node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayer1"]
+[node name="LEFTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayer1"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer1/LEFTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayer1/LEFTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayer1"]
+[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayer1"]
 position = Vector2(320, 0)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer1/RIGHTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayer1/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+[node name="TileMapLayer2" type="TileMapLayer" parent="ForegroundTilemapHolder"]
 position = Vector2(0, -1280)
 tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAAKABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAA=")
 tile_set = ExtResource("1_750w0")
 
-[node name="Marker2D" type="Marker2D" parent="TileMapLayer2"]
+[node name="Marker2D" type="Marker2D" parent="ForegroundTilemapHolder/TileMapLayer2"]
 position = Vector2(0, 640)
 
-[node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayer2"]
+[node name="LEFTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayer2"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer2/LEFTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayer2/LEFTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayer2"]
+[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayer2"]
 position = Vector2(320, 0)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer2/RIGHTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayer2/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="TileMapLayer3" type="TileMapLayer" parent="."]
+[node name="TileMapLayer3" type="TileMapLayer" parent="ForegroundTilemapHolder"]
 position = Vector2(0, -1920)
 tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAAKABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAA=")
 tile_set = ExtResource("1_750w0")
 
-[node name="Marker2D" type="Marker2D" parent="TileMapLayer3"]
+[node name="Marker2D" type="Marker2D" parent="ForegroundTilemapHolder/TileMapLayer3"]
 position = Vector2(0, 640)
 
-[node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayer3"]
+[node name="LEFTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayer3"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer3/LEFTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayer3/LEFTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayer3"]
+[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayer3"]
 position = Vector2(320, 0)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer3/RIGHTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayer3/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="TileMapLayerBase" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAABABMAZwALAAAAAAACABMAZwALAAAAAAADABMAZwALAAAAAAAEABMAZwALAAAAAAAFABMAZwALAAAAAAAGABMAZwALAAAAAAAHABMAZwALAAAAAAAIABMAZwALAAAAAAAKABMAZwALAAAAAAAJABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAA=")
+[node name="TileMapLayerBase" type="TileMapLayer" parent="ForegroundTilemapHolder"]
+tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAABABMAZwALAAAAAAACABMAZwALAAAAAAADABMAZwALAAAAAAAEABMAZwALAAAAAAAFABMAZwALAAAAAAAGABMAZwALAAAAAAAHABMAZwALAAAAAAAIABMAZwALAAAAAAAKABMAZwALAAAAAAAJABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAAAABQAZwALAAAAAAAAABUAZwALAAAAAAAAABYAZwALAAAAAAAAABcAZwALAAAAAAABABcAZwALAAAAAAACABcAZwALAAAAAAADABcAZwALAAAAAAAEABcAZwALAAAAAAAFABcAZwALAAAAAAAGABcAZwALAAAAAAAHABcAZwALAAAAAAAIABcAZwALAAAAAAAJABcAZwALAAAAAAAKABcAZwALAAAAAAAKABYAZwALAAAAAAAKABUAZwALAAAAAAAKABQAZwALAAAAAAAJABQAZwALAAAAAAAIABQAZwALAAAAAAAHABQAZwALAAAAAAAGABQAZwALAAAAAAAFABQAZwALAAAAAAAEABQAZwALAAAAAAADABQAZwALAAAAAAACABQAZwALAAAAAAABABQAZwALAAAAAAABABUAZwALAAAAAAABABYAZwALAAAAAAACABYAZwALAAAAAAADABYAZwALAAAAAAAEABYAZwALAAAAAAAFABYAZwALAAAAAAAGABYAZwALAAAAAAAHABYAZwALAAAAAAAIABYAZwALAAAAAAAJABYAZwALAAAAAAAJABUAZwALAAAAAAAIABUAZwALAAAAAAAHABUAZwALAAAAAAAGABUAZwALAAAAAAAFABUAZwALAAAAAAAEABUAZwALAAAAAAADABUAZwALAAAAAAACABUAZwALAAAAAAA=")
 tile_set = ExtResource("1_750w0")
 
-[node name="LEFTStaticBody2D" type="StaticBody2D" parent="TileMapLayerBase"]
+[node name="LEFTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayerBase"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerBase/LEFTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayerBase/LEFTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="TileMapLayerBase"]
+[node name="RIGHTStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayerBase"]
 position = Vector2(320, 0)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerBase/RIGHTStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayerBase/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
-[node name="BOTTOMStaticBody2D" type="StaticBody2D" parent="TileMapLayerBase"]
+[node name="BOTTOMStaticBody2D" type="StaticBody2D" parent="ForegroundTilemapHolder/TileMapLayerBase"]
 position = Vector2(32, 608)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerBase/BOTTOMStaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayerBase/BOTTOMStaticBody2D"]
 position = Vector2(144, 16)
 shape = SubResource("RectangleShape2D_xri7q")
 

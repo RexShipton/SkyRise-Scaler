@@ -73,13 +73,14 @@ shape = SubResource("RectangleShape2D_aflty")
 disabled = true
 
 [node name="spawnArea" type="Area2D" parent="."]
+position = Vector2(32, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawnArea"]
 position = Vector2(176, 48)
 shape = SubResource("RectangleShape2D_hgluf")
 
 [node name="Player" parent="." instance=ExtResource("3_e5w51")]
-position = Vector2(56, 600)
+position = Vector2(87, 601)
 
 [node name="HUD" parent="." instance=ExtResource("4_bkgi5")]
 
@@ -98,7 +99,7 @@ position = Vector2(180, 593)
 position = Vector2(163, 167)
 
 [node name="Lava" parent="." instance=ExtResource("7_vbyjo")]
-position = Vector2(329, 715)
+position = Vector2(364, 714)
 
 [node name="Sprite2D" parent="Lava" index="0"]
 position = Vector2(-155.092, 0.000561432)
@@ -130,22 +131,28 @@ transparent_bg = true
 size = Vector2i(156, 156)
 
 [node name="FireNode" parent="." instance=ExtResource("9_yisvt")]
-position = Vector2(31, 684)
+process_mode = 3
+position = Vector2(65, 685)
 
 [node name="FireNode2" parent="." instance=ExtResource("9_yisvt")]
-position = Vector2(87, 682)
+process_mode = 3
+position = Vector2(121, 683)
 
 [node name="FireNode3" parent="." instance=ExtResource("9_yisvt")]
-position = Vector2(148, 679)
+process_mode = 3
+position = Vector2(182, 680)
 
 [node name="FireNode4" parent="." instance=ExtResource("9_yisvt")]
-position = Vector2(211, 681)
+process_mode = 3
+position = Vector2(245, 682)
 
 [node name="FireNode5" parent="." instance=ExtResource("9_yisvt")]
-position = Vector2(265, 679)
+process_mode = 3
+position = Vector2(299, 680)
 
 [node name="FireNode6" parent="." instance=ExtResource("9_yisvt")]
-position = Vector2(315, 682)
+process_mode = 3
+position = Vector2(349, 683)
 
 [connection signal="game_over" from="." to="MapLooper" method="deActivate"]
 [connection signal="game_over" from="." to="HUD" method="game_over"]

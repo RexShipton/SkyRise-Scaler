@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var tile_map_layer_1: TileMapLayer = $TileMapLayer1
-@onready var tile_map_layer_2: TileMapLayer = $TileMapLayer2
-@onready var tile_map_layer_3: TileMapLayer = $TileMapLayer3
-@onready var tile_map_layer_base: TileMapLayer = $TileMapLayerBase
+@onready var tile_map_layer_1: TileMapLayer = $ForegroundTilemapHolder/TileMapLayer1
+@onready var tile_map_layer_2: TileMapLayer = $ForegroundTilemapHolder/TileMapLayer2
+@onready var tile_map_layer_3: TileMapLayer = $ForegroundTilemapHolder/TileMapLayer3
+@onready var tile_map_layer_base: TileMapLayer = $ForegroundTilemapHolder/TileMapLayerBase
 @onready var bg_tile_map_layer_1: TileMapLayer = $BackgroundTilemapHolder/BGTileMapLayer1
 @onready var bg_tile_map_layer_2: TileMapLayer = $BackgroundTilemapHolder/BGTileMapLayer2
 

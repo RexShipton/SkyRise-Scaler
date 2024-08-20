@@ -1,12 +1,12 @@
 extends CanvasLayer
 
-@onready var score_label: Label = $TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer2/ScoreLabel
+@onready var score_label: Label = $TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2/ScoreLabel
 @onready var game_over_score_label: Label = $Center/GameOverPanel/MarginContainer/VBoxContainer/HBoxContainer/GameOverScoreLabel
 @onready var game_over_panel: Panel = $Center/GameOverPanel
 @onready var switch_sound: AudioStreamPlayer = $SwitchSound
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var game_over_main_menu_button: Button = $Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton
-@onready var next_tile_texture: TextureRect = $TopRight/Panel/MarginContainer/VBoxContainer/HBoxContainer/NextTileHolder/TextureRect
+@onready var next_tile_texture: TextureRect = $TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/NextTileHolder/TextureRect
 
 func _ready() -> void:
 	update_score()
