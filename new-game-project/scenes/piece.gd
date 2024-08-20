@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var isPlaced : bool = false
 @export var move_speed : int = 200
-@export var fall_speed : int = 40
+@export var fall_speed : int = 20
 @export var fast_fall_speed : int = 200
 
 
@@ -32,7 +32,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if !isPlaced:
 		
-		velocity.y = fall_speed + (Input.get_action_strength("block_fast_fall") * fast_fall_speed)
+		velocity.y = fall_speed + (Input.get_action_strength("block_fast_fall") * fast_fall_speed) + ScoreManager.scoreResource.mapSpeed
 		
 		velocity.x = Input.get_axis("block_left","block_right") * move_speed
 		

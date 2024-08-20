@@ -9,6 +9,8 @@ extends Node2D
 
 @onready var score_updater: Timer = $ScoreUpdater
 
+signal updateLevel
+
 var tileMaps : Array
 var tileHeight : float = 640
 var tileMapIndex : int = 0
@@ -88,8 +90,8 @@ func _process(delta: float) -> void:
 	if tileToMove >= 0:
 		bgTileMaps[tileToMove].global_position.y = highestTileHeight - bgTileHeight
 	
-	if !gameOver:
-		mapDropSpeed += speedIncreasePerSecond * delta
+	#if !gameOver:
+		#mapDropSpeed += speedIncreasePerSecond * delta
 
 func add_piece(piece : Node) -> void:
 	connectedPieces.append(piece)
@@ -109,4 +111,39 @@ func deActivate() -> void:
 		active = false
 
 func _on_score_updater_timeout() -> void:
+	
 	ScoreManager.scoreResource.change_score(totalDistanceDropped)
+	var score = ScoreManager.scoreResource.score
+	var multiple_past_2k = 1
+	if score > 49 and score < 100:
+		mapDropSpeed = 15
+		updateLevel.emit(2)
+	if score > 99 and score < 200:
+		mapDropSpeed = 20
+		updateLevel.emit(3)
+	if score > 199 and score < 300:
+		mapDropSpeed = 25
+		updateLevel.emit(4)
+	if score > 299 and score < 500:
+		mapDropSpeed = 30
+		updateLevel.emit(5)
+	if score > 499 and score < 750:
+		mapDropSpeed = 35
+		updateLevel.emit(6)
+	if score > 749 and score < 1000:
+		mapDropSpeed = 40
+		updateLevel.emit(7)
+	if score > 999 and score < 1250:
+		mapDropSpeed = 45
+		updateLevel.emit(8)
+	if score > 1249 and score < 1500:
+		mapDropSpeed = 50
+		updateLevel.emit(9)
+	if score > 1499 and score < 2000:
+		mapDropSpeed = 55
+		updateLevel.emit(10)
+	if score > 2000:
+		if score > (2000 + (500 * multiple_past_2k)):
+			multiple_past_2k += 1
+			updateLevel.emit(5 + multiple_past_2k)
+	ScoreManager.scoreResource.change_map_speed(mapDropSpeed)
