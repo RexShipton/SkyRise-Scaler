@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://u84grsd473oa"]
+[gd_scene load_steps=7 format=4 uid="uid://u84grsd473oa"]
 
 [ext_resource type="TileSet" uid="uid://duauvrqv8jk" path="res://map_tileset.tres" id="1_750w0"]
 [ext_resource type="Script" path="res://scenes/map_looper.gd" id="1_guvpw"]
@@ -6,8 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_naqr5"]
 size = Vector2(32, 640)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pdra1"]
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 640, 0, 640)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xri7q"]
 size = Vector2(288, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o2q62"]
+polygon = PackedVector2Array(32, 608, 320, 608, 320, 640, 32, 640)
 
 [node name="MapLooper" type="Node2D"]
 script = ExtResource("1_guvpw")
@@ -66,6 +72,15 @@ collision_mask = 3
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayer1"]
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayer1"]
+position = Vector2(320, 0)
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
+
 [node name="TileMapLayer2" type="TileMapLayer" parent="ForegroundTilemapHolder"]
 position = Vector2(0, -1280)
 tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAAKABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAA=")
@@ -91,6 +106,15 @@ collision_mask = 3
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayer2"]
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayer2"]
+position = Vector2(320, 0)
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
+
 [node name="TileMapLayer3" type="TileMapLayer" parent="ForegroundTilemapHolder"]
 position = Vector2(0, -1920)
 tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAAKABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAA=")
@@ -115,6 +139,15 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayer3/RIGHTStaticBody2D"]
 position = Vector2(16, 320)
 shape = SubResource("RectangleShape2D_naqr5")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayer3"]
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayer3"]
+position = Vector2(320, 0)
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
 
 [node name="TileMapLayerBase" type="TileMapLayer" parent="ForegroundTilemapHolder"]
 tile_map_data = PackedByteArray("AAAAAAAAZwALAAAAAAAAAAEAZwALAAAAAAAAAAIAZwALAAAAAAAAAAMAZwALAAAAAAAAAAQAZwALAAAAAAAAAAUAZwALAAAAAAAAAAYAZwALAAAAAAAAAAcAZwALAAAAAAAAAAgAZwALAAAAAAAAAAkAZwALAAAAAAAAAAoAZwALAAAAAAAAAAsAZwALAAAAAAAAAAwAZwALAAAAAAAAAA0AZwALAAAAAAAAAA4AZwALAAAAAAAAAA8AZwALAAAAAAAAABAAZwALAAAAAAAAABEAZwALAAAAAAAAABIAZwALAAAAAAAAABMAZwALAAAAAAABABMAZwALAAAAAAACABMAZwALAAAAAAADABMAZwALAAAAAAAEABMAZwALAAAAAAAFABMAZwALAAAAAAAGABMAZwALAAAAAAAHABMAZwALAAAAAAAIABMAZwALAAAAAAAKABMAZwALAAAAAAAJABMAZwALAAAAAAAKABIAZwALAAAAAAAKABEAZwALAAAAAAAKABAAZwALAAAAAAAKAA8AZwALAAAAAAAKAA4AZwALAAAAAAAKAA0AZwALAAAAAAAKAAwAZwALAAAAAAAKAAsAZwALAAAAAAAKAAoAZwALAAAAAAAKAAkAZwALAAAAAAAKAAgAZwALAAAAAAAKAAcAZwALAAAAAAAKAAYAZwALAAAAAAAKAAUAZwALAAAAAAAKAAQAZwALAAAAAAAKAAMAZwALAAAAAAAKAAIAZwALAAAAAAAKAAEAZwALAAAAAAAKAAAAZwALAAAAAAAAABQAZwALAAAAAAAAABUAZwALAAAAAAAAABYAZwALAAAAAAAAABcAZwALAAAAAAABABcAZwALAAAAAAACABcAZwALAAAAAAADABcAZwALAAAAAAAEABcAZwALAAAAAAAFABcAZwALAAAAAAAGABcAZwALAAAAAAAHABcAZwALAAAAAAAIABcAZwALAAAAAAAJABcAZwALAAAAAAAKABcAZwALAAAAAAAKABYAZwALAAAAAAAKABUAZwALAAAAAAAKABQAZwALAAAAAAAJABQAZwALAAAAAAAIABQAZwALAAAAAAAHABQAZwALAAAAAAAGABQAZwALAAAAAAAFABQAZwALAAAAAAAEABQAZwALAAAAAAADABQAZwALAAAAAAACABQAZwALAAAAAAABABQAZwALAAAAAAABABUAZwALAAAAAAABABYAZwALAAAAAAACABYAZwALAAAAAAADABYAZwALAAAAAAAEABYAZwALAAAAAAAFABYAZwALAAAAAAAGABYAZwALAAAAAAAHABYAZwALAAAAAAAIABYAZwALAAAAAAAJABYAZwALAAAAAAAJABUAZwALAAAAAAAIABUAZwALAAAAAAAHABUAZwALAAAAAAAGABUAZwALAAAAAAAFABUAZwALAAAAAAAEABUAZwALAAAAAAADABUAZwALAAAAAAACABUAZwALAAAAAAA=")
@@ -145,6 +178,19 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundTilemapHolder/TileMapLayerBase/BOTTOMStaticBody2D"]
 position = Vector2(144, 16)
 shape = SubResource("RectangleShape2D_xri7q")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayerBase"]
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayerBase"]
+position = Vector2(320, 0)
+occluder = SubResource("OccluderPolygon2D_pdra1")
+occluder_light_mask = 32
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="ForegroundTilemapHolder/TileMapLayerBase"]
+occluder = SubResource("OccluderPolygon2D_o2q62")
+occluder_light_mask = 32
 
 [node name="ScoreUpdater" type="Timer" parent="."]
 wait_time = 0.1
