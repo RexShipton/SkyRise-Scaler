@@ -52,8 +52,8 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -242.0
-offset_bottom = 354.0
+offset_left = -232.0
+offset_bottom = 358.0
 grow_horizontal = 0
 mouse_filter = 2
 
@@ -92,7 +92,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Next:"
+text = "  Next:"
 label_settings = ExtResource("3_oia73")
 
 [node name="NextTileHolder" type="Control" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -137,6 +137,9 @@ layout_mode = 2
 text = "100 feet!"
 label_settings = ExtResource("3_oia73")
 
+[node name="Spacer" type="Control" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="Label" type="Label" parent="TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(6.9, 5.66)
 layout_mode = 2
@@ -144,6 +147,7 @@ text = "CONTROLS:
 WASD to move player.
 Arrow keys to move platforms."
 label_settings = ExtResource("3_oia73")
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Center" type="Control" parent="."]
@@ -265,7 +269,7 @@ size_flags_vertical = 6
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/italics_font_size = 24
 bbcode_enabled = true
-text = "[wave amp=40.0 freq=5.0][i][center][rainbow]Now Entering Level 2!"
+text = "[wave amp=40.0 freq=5.0][i][center][rainbow]Now Entering Level 1!"
 fit_content = true
 scroll_active = false
 
