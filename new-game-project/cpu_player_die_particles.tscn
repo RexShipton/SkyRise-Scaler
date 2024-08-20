@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy4m1pdd7bjwv"]
+
+[ext_resource type="Texture2D" uid="uid://cp5ojgxxvpiec" path="res://assets/Circle.png" id="1_7fk8j"]
+
+[node name="CPUPlayerDieParticles" type="CPUParticles2D"]
+emitting = false
+amount = 64
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_7fk8j")
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 220.0
+initial_velocity_max = 550.0
+scale_amount_min = 0.01
+scale_amount_max = 0.3
+color = Color(0.8, 0.113725, 0.113725, 1)
+hue_variation_min = -0.08
+hue_variation_max = 0.11
