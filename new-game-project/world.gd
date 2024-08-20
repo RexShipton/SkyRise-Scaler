@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 		next_piece = get_random_piece(pieces).instantiate()
 		next_piece.isPlaced = true
 		sub_viewport.add_child(next_piece)
-		next_piece.global_position = Vector2(sub_viewport.size.x / 2, sub_viewport.size.y / 2)
+		next_piece.global_position = Vector2(sub_viewport.size.x / 2.0, sub_viewport.size.y / 2.0)
 		next_piece_picked.emit(sub_viewport.get_texture())
 
 
