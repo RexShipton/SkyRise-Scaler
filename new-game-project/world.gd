@@ -48,6 +48,7 @@ func _process(_delta: float) -> void:
 		new_block.isPlaced = false
 		new_block.reparent(block_manager)
 		new_block.global_position = block_spawner.global_position
+		new_block.spawn_items()
 		#block_manager.add_child(new_block)
 		active_block = new_block
 		active_block.piece_placed.connect(_on_piece_placed)
