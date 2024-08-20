@@ -10,6 +10,8 @@ var push_force = 80.0
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var death_area_2d: Area2D = $DeathArea2D
+@onready var jump_sound: AudioStreamPlayer = $JumpSound
+@onready var die_sound: AudioStreamPlayer = $DieSound
 
 
 @export var SPEED = 300.0
@@ -87,18 +89,21 @@ func Check_OOB() -> void:
 	if global_position.x < -10 \
 	or global_position.x > 352 \
 	or global_position.y > 780:
-		dead = true
-		die.emit()
+		Die()
 
 func Jump():
+	jump_sound.play()
 	velocity.y = JUMP_VELOCITY
 	jump_buffer = false
 	jump_available = false
 
 func Die():
+	die_sound.play()
 	death_area_2d.set_deferred("monitoring", false)
 	dead = true
 	animation_player.play("die")
+	await animation_player.animation_finished
+	die.emit()
 
 func _on_jump_buffer_timer_timeout() -> void:
 	jump_buffer = false

@@ -12,6 +12,7 @@ var spawn_area_contents = []
 @onready var block_manager: Node2D = $blockManager
 @onready var piece = preload("res://scenes/pieces/piece.tscn")
 @onready var spawn_area: Area2D = $spawnArea
+@onready var piece_placed_sound: AudioStreamPlayer = $PiecePlacedSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,6 +33,7 @@ func _process(_delta: float) -> void:
 	
 
 func _on_piece_placed():
+	piece_placed_sound.play()
 	piece_placed.emit(active_block)
 	has_falling_block = false
 	active_block = null

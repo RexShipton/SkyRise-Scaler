@@ -1,10 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://dp122pt878tim"]
+[gd_scene load_steps=37 format=3 uid="uid://dp122pt878tim"]
 
 [ext_resource type="Texture2D" uid="uid://crnak2st0acmc" path="res://assets/Characters/1 Worker/Death.png" id="1_kdwuv"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ui1eo"]
 [ext_resource type="Texture2D" uid="uid://c0ph12vsgbdjf" path="res://assets/Characters/1 Worker/Hurt.png" id="2_7sk7g"]
 [ext_resource type="Texture2D" uid="uid://8xxr2g8o3vtp" path="res://assets/Characters/1 Worker/Idle.png" id="3_kp436"]
 [ext_resource type="Texture2D" uid="uid://hyneh5uamlp5" path="res://assets/Characters/1 Worker/Run.png" id="4_npoeq"]
+[ext_resource type="AudioStream" uid="uid://b68rsu4ax6mdp" path="res://sounds/jump.wav" id="6_0r8sh"]
+[ext_resource type="AudioStream" uid="uid://ofydyqso12vq" path="res://sounds/lose.wav" id="6_1cuf2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rams7"]
 radius = 8.0
@@ -384,6 +386,14 @@ collision_mask = 42
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea2D"]
 position = Vector2(-1, -17)
 shape = SubResource("CapsuleShape2D_frgqc")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0r8sh")
+volume_db = -5.0
+
+[node name="DieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1cuf2")
+volume_db = -10.0
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
