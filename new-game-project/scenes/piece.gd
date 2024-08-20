@@ -24,11 +24,7 @@ signal piece_placed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var spawnList = item_spawns.get_children()
-	var itemSpawnPoint = spawnList[randi() % spawnList.size()]
-	var new_item = barrel.instantiate()
-	new_item.global_position = itemSpawnPoint.global_position
-	get_node("/root/World/itemManager").add_child(new_item)
+	pass
 
 
 
@@ -72,3 +68,11 @@ func _process(_delta: float) -> void:
 			force_update_transform()
 			if rotation_degrees > 180:
 				rotation_degrees -= 360
+
+
+func spawn_items():
+	var spawnList = item_spawns.get_children()
+	var itemSpawnPoint = spawnList[randi() % spawnList.size()]
+	var new_item = barrel.instantiate()
+	new_item.global_position = itemSpawnPoint.global_position
+	get_node("/root/World/itemManager").add_child(new_item)

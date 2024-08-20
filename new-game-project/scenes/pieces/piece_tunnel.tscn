@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://bj1fqwjroljou"]
+[gd_scene load_steps=76 format=4 uid="uid://bj1fqwjroljou"]
 
 [ext_resource type="Script" path="res://scenes/piece.gd" id="1_ubgxo"]
 [ext_resource type="Texture2D" uid="uid://c5gr1u4tc73ih" path="res://assets/1 Tiles/IndustrialTile_55.png" id="2_hecnt"]
@@ -243,11 +243,8 @@ sources/31 = SubResource("TileSetAtlasSource_2nxq4")
 sources/32 = SubResource("TileSetAtlasSource_c3ts6")
 sources/33 = SubResource("TileSetAtlasSource_3f0r0")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_53etg"]
-size = Vector2(32, 382)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3m0j"]
-size = Vector2(32, 382)
+size = Vector2(32, 351)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2sek"]
 size = Vector2(140, 5)
@@ -255,26 +252,31 @@ size = Vector2(140, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jb7x"]
 size = Vector2(140, 5)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_652up"]
+polygon = PackedVector2Array(-64, -160, -32, -160, -32, 192, -64, 192, -64, 96, -96, 96, -96, 64, -64, 64, -64, -32, -96, -32, -96, -64, -64, -64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5hmt6"]
+polygon = PackedVector2Array(32, -160, 64, -160, 64, 192, 32, 192)
+
 [node name="PieceTunnel" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ubgxo")
 
 [node name="Background" type="TileMapLayer" parent="."]
 position = Vector2(-128, 0)
-tile_map_data = PackedByteArray("AAADAP3/CwAAAAAAADAEAP3/CwAAAAAAADADAAIACgAAAAAAAAAEAAIACgAAAAAAAAADAAEACwAAAAAAADAEAAEACwAAAAAAADADAAUACwAAAAAAAAAEAAUACwAAAAAAAAADAPv/CwAAAAAAAAAEAPv/CwAAAAAAAAADAP7/CwAAAAAAAAAEAP7/CwAAAAAAAAADAAQACwAAAAAAADAEAAQACwAAAAAAADADAPr/CwAAAAAAADAEAPr/CwAAAAAAADA=")
+tile_map_data = PackedByteArray("AAADAP3/CwAAAAAAAAAEAP3/CwAAAAAAAAADAPz/CwAAAAAAADAEAPz/CwAAAAAAADADAAQACwAAAAAAAAAEAAQACwAAAAAAAAADAAMACwAAAAAAADAEAAMACwAAAAAAADA=")
 tile_set = SubResource("TileSet_u087o")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 position = Vector2(-128, 0)
-tile_map_data = PackedByteArray("AAACAPr/HgAAAAAAAAAFAPr/HgAAAAAAAAACAPv/HwAAAAAAAAACAPz/HwAAAAAAAAACAP3/HwAAAAAAAAACAP7/HwAAAAAAAAACAP//HwAAAAAAAAACAAAAHwAAAAAAAAACAAEAHwAAAAAAAAACAAIAHwAAAAAAAAACAAMAHwAAAAAAAAACAAQAHwAAAAAAAAAFAPv/HwAAAAAAAAAFAPz/HwAAAAAAAAAFAP3/HwAAAAAAAAAFAP7/HwAAAAAAAAAFAP//HwAAAAAAAAAFAAAAHwAAAAAAAAAFAAEAHwAAAAAAAAAFAAIAHwAAAAAAAAAFAAMAHwAAAAAAAAAFAAQAHwAAAAAAAAAFAAUAIAAAAAAAAAACAAUAIAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAPv/HwAAAAAAAAACAPz/HwAAAAAAAAACAP3/HwAAAAAAAAACAP7/HwAAAAAAAAACAP//HwAAAAAAAAACAAAAHwAAAAAAAAACAAEAHwAAAAAAAAACAAIAHwAAAAAAAAACAAMAHwAAAAAAAAACAAQAHwAAAAAAAAAFAPv/HwAAAAAAAAAFAPz/HwAAAAAAAAAFAP3/HwAAAAAAAAAFAP7/HwAAAAAAAAAFAP//HwAAAAAAAAAFAAAAHwAAAAAAAAAFAAEAHwAAAAAAAAAFAAIAHwAAAAAAAAAFAAMAHwAAAAAAAAAFAAQAHwAAAAAAAAAFAAUAIAAAAAAAAAACAAUAIAAAAAAAAAABAAIAHgAAAAAAAGABAP7/HgAAAAAAAGA=")
 tile_set = SubResource("TileSet_u087o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-48, 0)
-shape = SubResource("RectangleShape2D_53etg")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-64, -160, -32, -160, -32, 192, -64, 192, -64, 96, -96, 96, -96, 64, -64, 64, -64, -32, -96, -32, -96, -64, -64, -64)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(48, 0)
+position = Vector2(48, 15.5)
 shape = SubResource("RectangleShape2D_l3m0j")
 
 [node name="RightMarker" type="Marker2D" parent="."]
@@ -305,3 +307,9 @@ position = Vector2(50, -216)
 
 [node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
 position = Vector2(-52, -216)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_652up")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_5hmt6")

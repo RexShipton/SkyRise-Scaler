@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://dgv5348r2jc7i"]
+[gd_scene load_steps=93 format=4 uid="uid://dgv5348r2jc7i"]
 
 [ext_resource type="Script" path="res://scenes/piece.gd" id="1_p625l"]
 [ext_resource type="Texture2D" uid="uid://c5gr1u4tc73ih" path="res://assets/1 Tiles/IndustrialTile_55.png" id="2_kwkff"]
@@ -357,6 +357,9 @@ size = Vector2(140, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jscq"]
 size = Vector2(140, 5)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s3bsj"]
+polygon = PackedVector2Array(-80, -80, -80, 80, 80, 80, 80, -80)
+
 [node name="PieceBlock" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_p625l")
@@ -394,10 +397,13 @@ collision_mask = 2
 position = Vector2(20, -8)
 
 [node name="Marker2D" type="Marker2D" parent="ItemSpawns"]
-position = Vector2(-80, -86)
+position = Vector2(-80, -94)
 
 [node name="Marker2D2" type="Marker2D" parent="ItemSpawns"]
-position = Vector2(34, -90)
+position = Vector2(36, -96)
 
 [node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
-position = Vector2(-40, -88)
+position = Vector2(-40, -94)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_s3bsj")

@@ -103,15 +103,14 @@ position = Vector2(329, 715)
 stream = ExtResource("8_56yrn")
 volume_db = -15.0
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(173, 660)
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-rotation = -0.0349066
+rotation = -0.305433
 color = Color(0.888627, 0.706, 0.677256, 1)
+energy = 0.5
 shadow_enabled = true
+shadow_color = Color(0.215686, 0.215686, 0.215686, 0.384314)
 shadow_filter = 2
-shadow_filter_smooth = 1.5
+shadow_filter_smooth = 2.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.631289, 0.621251, 0.639962, 1)

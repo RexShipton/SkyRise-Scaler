@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbluroxxhgnbx"]
+[gd_scene load_steps=6 format=3 uid="uid://bbluroxxhgnbx"]
 
 [ext_resource type="Script" path="res://scenes/objects/barrel.gd" id="1_ekwb5"]
 [ext_resource type="Texture2D" uid="uid://b8lbfgjo5q7e3" path="res://assets/3 Objects/Barrel1.png" id="1_gsjl0"]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_113su"]
 radius = 7.0
 height = 20.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qt5vu"]
+polygon = PackedVector2Array(-8, 8, -8, -11, 8, -11, 8, 8)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 16
@@ -47,5 +50,8 @@ monitorable = false
 
 [node name="CollisionShape2D" parent="CrushNode/Bottom" index="0"]
 position = Vector2(0, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_qt5vu")
 
 [editable path="CrushNode"]

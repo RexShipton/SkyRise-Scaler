@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://1bv2faa3fd47"]
+[gd_scene load_steps=74 format=4 uid="uid://1bv2faa3fd47"]
 
 [ext_resource type="Script" path="res://scenes/piece.gd" id="1_0lfr3"]
 [ext_resource type="Texture2D" uid="uid://c5gr1u4tc73ih" path="res://assets/1 Tiles/IndustrialTile_55.png" id="2_jx0je"]
@@ -249,6 +249,9 @@ size = Vector2(125, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mghpc"]
 size = Vector2(125, 10)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8ikd5"]
+polygon = PackedVector2Array(-126, 32, -64, 32, -64, -64, 130, -64, 130, -32, 32, -32, 32, 64, -126, 64)
+
 [node name="Piece" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0lfr3")
@@ -294,3 +297,6 @@ position = Vector2(96, -82)
 
 [node name="Marker2D3" type="Marker2D" parent="ItemSpawns"]
 position = Vector2(-44, -84)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_8ikd5")
