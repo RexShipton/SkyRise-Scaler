@@ -46,7 +46,7 @@ use_parent_material = true
 tile_set = ExtResource("2_rda4a")
 
 [node name="blockSpawner" type="Marker2D" parent="."]
-position = Vector2(173, 0)
+position = Vector2(207, -36)
 
 [node name="spawnTimer" type="Timer" parent="."]
 autostart = true
@@ -79,10 +79,10 @@ shape = SubResource("RectangleShape2D_aflty")
 disabled = true
 
 [node name="spawnArea" type="Area2D" parent="."]
-position = Vector2(32, -1)
+position = Vector2(32, 22)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawnArea"]
-position = Vector2(176, 48)
+position = Vector2(176, 23)
 shape = SubResource("RectangleShape2D_hgluf")
 
 [node name="Player" parent="." instance=ExtResource("3_e5w51")]
@@ -161,9 +161,9 @@ process_mode = 3
 position = Vector2(349, 683)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(174.369, 579.323)
+position = Vector2(207.906, 578.888)
 rotation = 1.5708
-scale = Vector2(4.17741, 5.6887)
+scale = Vector2(4.17391, 5.49783)
 texture = SubResource("GradientTexture2D_hdww1")
 
 [connection signal="game_over" from="." to="MapLooper" method="deActivate"]

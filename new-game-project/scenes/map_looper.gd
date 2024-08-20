@@ -39,10 +39,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !active: return
 	
+	
 	var dropSpeed : float = mapDropSpeed * delta
 	dropSpeed = clampf(dropSpeed, 0, 600)
 	
-	totalDistanceDropped += dropSpeed
+	if !gameOver:
+		totalDistanceDropped += dropSpeed
 	
 	if tile_map_layer_base.visible:
 		tile_map_layer_base.global_position.y += dropSpeed
@@ -86,7 +88,8 @@ func _process(delta: float) -> void:
 	if tileToMove >= 0:
 		bgTileMaps[tileToMove].global_position.y = highestTileHeight - bgTileHeight
 	
-	mapDropSpeed += speedIncreasePerSecond * delta
+	if !gameOver:
+		mapDropSpeed += speedIncreasePerSecond * delta
 
 func add_piece(piece : Node) -> void:
 	connectedPieces.append(piece)
@@ -100,9 +103,9 @@ func activate() -> void:
 
 func deActivate() -> void:
 	score_updater.stop()
+	gameOver = true
 	
 	if ScoreManager.stopMapOnGameOver:
-		gameOver = true
 		active = false
 
 func _on_score_updater_timeout() -> void:
