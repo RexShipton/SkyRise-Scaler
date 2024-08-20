@@ -4,12 +4,19 @@ extends Node2D
 @onready var tile_map_layer_2: TileMapLayer = $TileMapLayer2
 @onready var tile_map_layer_3: TileMapLayer = $TileMapLayer3
 @onready var tile_map_layer_base: TileMapLayer = $TileMapLayerBase
+@onready var bg_tile_map_layer_1: TileMapLayer = $BackgroundTilemapHolder/BGTileMapLayer1
+@onready var bg_tile_map_layer_2: TileMapLayer = $BackgroundTilemapHolder/BGTileMapLayer2
 
 @onready var score_updater: Timer = $ScoreUpdater
 
 var tileMaps : Array
 var tileHeight : float = 640
 var tileMapIndex : int = 0
+
+var bgTileMaps : Array
+var bgTileHeight : float = 1408
+var bgTileMapIndex : int = 0
+var bgTileSpeedMultiplier : float = .25
 
 var connectedPieces : Array
 
@@ -26,6 +33,8 @@ func _ready() -> void:
 	tileMaps.append(tile_map_layer_1)
 	tileMaps.append(tile_map_layer_2)
 	tileMaps.append(tile_map_layer_3)
+	bgTileMaps.append(bg_tile_map_layer_1)
+	bgTileMaps.append(bg_tile_map_layer_2)
 
 func _process(delta: float) -> void:
 	if !active: return
@@ -63,6 +72,19 @@ func _process(delta: float) -> void:
 	
 	if tileToMove >= 0:
 		tileMaps[tileToMove].global_position.y = highestTileHeight - tileHeight
+	
+	tileToMove = -1
+	highestTileHeight = 0
+	
+	for i in bgTileMaps:
+		i.global_position.y += dropSpeed * bgTileSpeedMultiplier
+		if i.global_position.y < highestTileHeight:
+			highestTileHeight = i.global_position.y
+		if i.global_position.y >= 1000:
+			tileToMove = bgTileMaps.find(i)
+	
+	if tileToMove >= 0:
+		bgTileMaps[tileToMove].global_position.y = highestTileHeight - bgTileHeight
 	
 	mapDropSpeed += speedIncreasePerSecond * delta
 

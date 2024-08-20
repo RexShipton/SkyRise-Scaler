@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://e27tcmwbd3ke"]
+[gd_scene load_steps=13 format=4 uid="uid://e27tcmwbd3ke"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_novwx"]
 [ext_resource type="PackedScene" uid="uid://u84grsd473oa" path="res://scenes/map_looper.tscn" id="2_64qo5"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dp122pt878tim" path="res://scenes/player.tscn" id="3_e5w51"]
 [ext_resource type="PackedScene" uid="uid://c3ivuprkcunht" path="res://scenes/hud.tscn" id="4_bkgi5"]
 [ext_resource type="PackedScene" uid="uid://bbluroxxhgnbx" path="res://scenes/objects/barrel.tscn" id="6_7v22v"]
+[ext_resource type="PackedScene" uid="uid://d0mlm2pdhrb1q" path="res://scenes/lava.tscn" id="7_vbyjo"]
+[ext_resource type="AudioStream" uid="uid://cylhp3ua5ksop" path="res://sounds/place.wav" id="8_56yrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq13f"]
 size = Vector2(32, 640)
@@ -94,6 +96,13 @@ position = Vector2(180, 593)
 [node name="RigidBody2D4" parent="itemManager" instance=ExtResource("6_7v22v")]
 position = Vector2(163, 167)
 
+[node name="Lava" parent="." instance=ExtResource("7_vbyjo")]
+position = Vector2(329, 715)
+
+[node name="PiecePlacedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_56yrn")
+volume_db = -15.0
+
 [connection signal="game_over" from="." to="MapLooper" method="deActivate"]
 [connection signal="game_over" from="." to="HUD" method="game_over"]
 [connection signal="piece_placed" from="." to="MapLooper" method="add_piece"]
@@ -101,3 +110,6 @@ position = Vector2(163, 167)
 [connection signal="body_entered" from="spawnArea" to="." method="_on_spawn_area_body_entered"]
 [connection signal="body_exited" from="spawnArea" to="." method="_on_spawn_area_body_exited"]
 [connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="area_entered" from="Lava/Area2D" to="Player" method="_on_death_area_2d_body_entered"]
+
+[editable path="Lava"]

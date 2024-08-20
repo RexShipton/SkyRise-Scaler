@@ -26,6 +26,7 @@ var spawn_area_contents = []
 	preload("res://scenes/pieces/piece_tunnel.tscn"),
 ]
 
+@onready var piece_placed_sound: AudioStreamPlayer = $PiecePlacedSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,6 +50,7 @@ func add_item_to_world(body):
 	item_manager.add_child(body)
 
 func _on_piece_placed():
+	piece_placed_sound.play()
 	piece_placed.emit(active_block)
 	has_falling_block = false
 	active_block = null

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3ivuprkcunht"]
+[gd_scene load_steps=7 format=3 uid="uid://c3ivuprkcunht"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_y4rcl"]
 [ext_resource type="PackedScene" uid="uid://c51vx8iq5wpff" path="res://scenes/pause_manager.tscn" id="2_k57vt"]
 [ext_resource type="LabelSettings" uid="uid://djlreeuvaybhc" path="res://16pxLabelSettings.tres" id="3_oia73"]
 [ext_resource type="LabelSettings" uid="uid://c5s06bpxvxfy0" path="res://24pxLabelSettings.tres" id="4_de4ug"]
+[ext_resource type="AudioStream" uid="uid://b5td44yj4blkb" path="res://sounds/click.wav" id="5_wavpm"]
+[ext_resource type="AudioStream" uid="uid://btfxxodd8rhk7" path="res://sounds/switch.wav" id="6_2w2a0"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y4rcl")
@@ -150,4 +152,15 @@ text = "Main Menu"
 [node name="PauseManager" parent="." instance=ExtResource("2_k57vt")]
 visible = false
 
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wavpm")
+volume_db = -5.0
+
+[node name="SwitchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2w2a0")
+volume_db = -15.0
+
+[connection signal="focus_entered" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="play_switch_sound"]
+[connection signal="mouse_entered" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="_on_game_over_main_menu_button_mouse_entered"]
+[connection signal="pressed" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="play_click_sound"]
 [connection signal="pressed" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="_on_game_over_main_menu_button_pressed"]
