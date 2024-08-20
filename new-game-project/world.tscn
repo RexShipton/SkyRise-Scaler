@@ -170,6 +170,7 @@ texture = SubResource("GradientTexture2D_hdww1")
 [connection signal="game_over" from="." to="HUD" method="game_over"]
 [connection signal="next_piece_picked" from="." to="HUD" method="update_tile"]
 [connection signal="piece_placed" from="." to="MapLooper" method="add_piece"]
+[connection signal="updateLevel" from="MapLooper" to="HUD" method="update_level"]
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="spawnArea" to="." method="_on_spawn_area_body_entered"]
 [connection signal="body_exited" from="spawnArea" to="." method="_on_spawn_area_body_exited"]

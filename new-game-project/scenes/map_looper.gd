@@ -9,7 +9,7 @@ extends Node2D
 
 @onready var score_updater: Timer = $ScoreUpdater
 
-signal updateLevel
+signal updateLevel(level : int)
 
 var tileMaps : Array
 var tileHeight : float = 640
@@ -22,6 +22,7 @@ var bgTileSpeedMultiplier : float = .25
 
 var connectedPieces : Array
 
+var level : int = 0
 var active : bool = false
 var gameOver : bool = false
 var totalDistanceDropped : float = 0
@@ -110,40 +111,48 @@ func deActivate() -> void:
 	if ScoreManager.stopMapOnGameOver:
 		active = false
 
+func changeLevel(tempLevel : int) -> void:
+	if level == tempLevel: return
+	
+	level = tempLevel
+	updateLevel.emit(tempLevel)
+
 func _on_score_updater_timeout() -> void:
 	
 	ScoreManager.scoreResource.change_score(totalDistanceDropped)
 	var score = ScoreManager.scoreResource.score
-	var multiple_past_2k = 1
+	if score < 49:
+		mapDropSpeed = 10
+		changeLevel(1)
 	if score > 49 and score < 100:
 		mapDropSpeed = 15
-		updateLevel.emit(2)
+		changeLevel(2)
 	if score > 99 and score < 200:
 		mapDropSpeed = 20
-		updateLevel.emit(3)
+		changeLevel(3)
 	if score > 199 and score < 300:
 		mapDropSpeed = 25
-		updateLevel.emit(4)
+		changeLevel(4)
 	if score > 299 and score < 500:
 		mapDropSpeed = 30
-		updateLevel.emit(5)
+		changeLevel(5)
 	if score > 499 and score < 750:
 		mapDropSpeed = 35
-		updateLevel.emit(6)
+		changeLevel(6)
 	if score > 749 and score < 1000:
 		mapDropSpeed = 40
-		updateLevel.emit(7)
+		changeLevel(7)
 	if score > 999 and score < 1250:
 		mapDropSpeed = 45
-		updateLevel.emit(8)
+		changeLevel(8)
 	if score > 1249 and score < 1500:
 		mapDropSpeed = 50
-		updateLevel.emit(9)
+		changeLevel(9)
 	if score > 1499 and score < 2000:
 		mapDropSpeed = 55
-		updateLevel.emit(10)
+		changeLevel(10)
 	if score > 2000:
-		if score > (2000 + (500 * multiple_past_2k)):
-			multiple_past_2k += 1
-			updateLevel.emit(5 + multiple_past_2k)
+		var multiple_past_2k : int = floorf((score - 2000) / 500)
+		mapDropSpeed = 55
+		changeLevel(10 + multiple_past_2k)
 	ScoreManager.scoreResource.change_map_speed(mapDropSpeed)

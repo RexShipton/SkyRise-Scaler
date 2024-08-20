@@ -7,6 +7,11 @@ extends CanvasLayer
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var game_over_main_menu_button: Button = $Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton
 @onready var next_tile_texture: TextureRect = $TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/NextTileHolder/TextureRect
+@onready var level_label: Label = $TopRight/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer3/LevelLabel
+@onready var rich_level_text_label: RichTextLabel = $LevelAnimator/Panel/MarginContainer/VBoxContainer/RichLevelTextLabel
+@onready var level_animation_player: AnimationPlayer = $LevelAnimator/LevelAnimationPlayer
+
+const defaultRichTextString : String = "[wave amp=40.0 freq=5.0][i][center][rainbow]Now Entering Level "
 
 func _ready() -> void:
 	update_score()
@@ -19,6 +24,12 @@ func update_score() -> void:
 
 func update_tile(tileTexture : Texture) -> void:
 	next_tile_texture.texture = tileTexture
+
+func update_level(level : int) -> void:
+	level_label.text = str(level) + "!"
+	rich_level_text_label.text = defaultRichTextString + str(level) + "!"
+	level_animation_player.stop()
+	level_animation_player.play("play")
 
 func game_over() -> void:
 	game_over_panel.visible = true
