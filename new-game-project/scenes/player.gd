@@ -103,6 +103,7 @@ func Die():
 	dead = true
 	animation_player.play("die")
 	await animation_player.animation_finished
+	visible = false
 	die.emit()
 
 func _on_jump_buffer_timer_timeout() -> void:
