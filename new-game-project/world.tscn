@@ -115,9 +115,14 @@ shadow_filter_smooth = 1.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.631289, 0.621251, 0.639962, 1)
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(156, 156)
 
 [connection signal="game_over" from="." to="MapLooper" method="deActivate"]
 [connection signal="game_over" from="." to="HUD" method="game_over"]
+[connection signal="next_piece_picked" from="." to="HUD" method="update_tile"]
 [connection signal="piece_placed" from="." to="MapLooper" method="add_piece"]
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="spawnArea" to="." method="_on_spawn_area_body_entered"]
