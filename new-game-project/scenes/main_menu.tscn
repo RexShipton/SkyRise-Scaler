@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blbdkmm6nlsxe"]
+[gd_scene load_steps=11 format=3 uid="uid://blbdkmm6nlsxe"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_kwgro"]
 [ext_resource type="Texture2D" uid="uid://xf0ibv4tt0ki" path="res://assets/2 Background/Background.png" id="2_dpyhu"]
@@ -6,6 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://c5s06bpxvxfy0" path="res://24pxLabelSettings.tres" id="4_2aigo"]
 [ext_resource type="AudioStream" uid="uid://b5td44yj4blkb" path="res://sounds/click.wav" id="5_agj05"]
 [ext_resource type="AudioStream" uid="uid://btfxxodd8rhk7" path="res://sounds/switch.wav" id="6_r71js"]
+[ext_resource type="PackedScene" uid="uid://bvoo88jocgr2y" path="res://scenes/v_slider.tscn" id="7_7gg31"]
 
 [sub_resource type="Animation" id="Animation_xlxi6"]
 length = 0.001
@@ -184,9 +185,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -185.0
-offset_top = 24.0
+offset_top = 74.0
 offset_right = 185.0
-offset_bottom = 91.0
+offset_bottom = 141.0
 grow_horizontal = 2
 pivot_offset = Vector2(185, 33.5)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -308,6 +309,39 @@ volume_db = -5.0
 [node name="SwitchSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_r71js")
 volume_db = -15.0
+
+[node name="VSlider" parent="." instance=ExtResource("7_7gg31")]
+modulate = Color(0.966986, 0, 0.163026, 1)
+offset_left = 424.0
+offset_top = 555.0
+offset_right = 502.0
+offset_bottom = 643.0
+bus_name = "music"
+
+[node name="Label" type="Label" parent="VSlider"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 92.0
+offset_right = 64.0
+offset_bottom = 115.0
+text = "Music"
+
+[node name="VSlider2" parent="." instance=ExtResource("7_7gg31")]
+modulate = Color(0.968627, 0, 0.164706, 1)
+offset_left = 500.0
+offset_top = 555.0
+offset_right = 578.0
+offset_bottom = 643.0
+bus_name = "sfx"
+
+[node name="Label" type="Label" parent="VSlider2"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 92.0
+offset_right = 67.0
+offset_bottom = 115.0
+text = "SFX
+"
 
 [connection signal="focus_entered" from="Center/Panel/MarginContainer/VBoxContainer/PlayButton" to="." method="play_switch_sound"]
 [connection signal="mouse_entered" from="Center/Panel/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_mouse_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://e27tcmwbd3ke"]
+[gd_scene load_steps=17 format=4 uid="uid://e27tcmwbd3ke"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_novwx"]
 [ext_resource type="PackedScene" uid="uid://u84grsd473oa" path="res://scenes/map_looper.tscn" id="2_64qo5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d0mlm2pdhrb1q" path="res://scenes/lava.tscn" id="7_vbyjo"]
 [ext_resource type="AudioStream" uid="uid://cylhp3ua5ksop" path="res://sounds/place.wav" id="8_56yrn"]
 [ext_resource type="PackedScene" uid="uid://cwemw782e3sia" path="res://cpu_fire.tscn" id="9_nbjg6"]
+[ext_resource type="PackedScene" uid="uid://bvoo88jocgr2y" path="res://scenes/v_slider.tscn" id="10_efgki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq13f"]
 size = Vector2(32, 640)
@@ -118,6 +119,7 @@ scale = Vector2(0.293729, 1)
 [node name="PiecePlacedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_56yrn")
 volume_db = -15.0
+bus = &"sfx"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 rotation = -0.305433
@@ -144,6 +146,39 @@ position = Vector2(207.906, 578.888)
 rotation = 1.5708
 scale = Vector2(4.17391, 5.49783)
 texture = SubResource("GradientTexture2D_hdww1")
+
+[node name="VSlider" parent="." instance=ExtResource("10_efgki")]
+modulate = Color(0.966986, 0, 0.163026, 1)
+offset_left = 424.0
+offset_top = 555.0
+offset_right = 502.0
+offset_bottom = 643.0
+bus_name = "music"
+
+[node name="Label" type="Label" parent="VSlider"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 92.0
+offset_right = 64.0
+offset_bottom = 115.0
+text = "Music"
+
+[node name="VSlider2" parent="." instance=ExtResource("10_efgki")]
+modulate = Color(0.968627, 0, 0.164706, 1)
+offset_left = 500.0
+offset_top = 555.0
+offset_right = 578.0
+offset_bottom = 643.0
+bus_name = "sfx"
+
+[node name="Label" type="Label" parent="VSlider2"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 92.0
+offset_right = 67.0
+offset_bottom = 115.0
+text = "SFX
+"
 
 [connection signal="game_over" from="." to="MapLooper" method="deActivate"]
 [connection signal="game_over" from="." to="HUD" method="game_over"]
