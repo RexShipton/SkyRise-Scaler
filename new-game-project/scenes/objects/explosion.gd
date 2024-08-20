@@ -33,5 +33,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	#var actual_force = fraction_of_force * direction * 20
 	var direction = (body.global_position - center_marker_2d.global_position).normalized()
 	var actual_force = 5000*direction/(body.global_position-center_marker_2d.global_position).length()
-	print(actual_force)
 	body.ApplyForce(actual_force)

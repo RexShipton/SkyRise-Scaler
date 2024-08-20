@@ -72,13 +72,6 @@ func _on_piece_placed():
 
 
 
-#func _on_spawn_timer_timeout() -> void:
-	#print("timer hit")
-	#var new_block = piece.instantiate()
-	#new_block.global_position = block_spawner.global_position
-	#block_manager.add_child(new_block)
-	#print(new_block.global_position)
-
 func get_random_piece(piece_list: Array):
 	if piece_list.is_empty():
 		print("piece array is zero and it should never be zero")

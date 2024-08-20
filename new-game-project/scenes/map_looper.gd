@@ -120,6 +120,7 @@ func changeLevel(tempLevel : int) -> void:
 func _on_score_updater_timeout() -> void:
 	
 	ScoreManager.scoreResource.change_score(totalDistanceDropped)
+	
 	var score = ScoreManager.scoreResource.score
 	if score < 49:
 		mapDropSpeed = 10

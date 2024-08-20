@@ -20,7 +20,7 @@ func die():
 	queue_free()
 
 func ApplyForce(force_added):
-	print("barrel hit :" + str(force_added))
+
 	apply_central_force(force_added * 1000)
 
 
