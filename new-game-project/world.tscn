@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bbluroxxhgnbx" path="res://scenes/objects/barrel.tscn" id="6_7v22v"]
 [ext_resource type="PackedScene" uid="uid://d0mlm2pdhrb1q" path="res://scenes/lava.tscn" id="7_vbyjo"]
 [ext_resource type="AudioStream" uid="uid://cylhp3ua5ksop" path="res://sounds/place.wav" id="8_56yrn"]
-[ext_resource type="PackedScene" uid="uid://p2ytc62gcafx" path="res://scenes/objects/fire_node.tscn" id="9_yisvt"]
+[ext_resource type="PackedScene" uid="uid://cwemw782e3sia" path="res://cpu_fire.tscn" id="9_nbjg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq13f"]
 size = Vector2(32, 640)
@@ -46,7 +46,7 @@ use_parent_material = true
 tile_set = ExtResource("2_rda4a")
 
 [node name="blockSpawner" type="Marker2D" parent="."]
-position = Vector2(207, -36)
+position = Vector2(207, -61)
 
 [node name="spawnTimer" type="Timer" parent="."]
 autostart = true
@@ -105,15 +105,15 @@ position = Vector2(180, 593)
 position = Vector2(280, 595)
 
 [node name="Lava" parent="." instance=ExtResource("7_vbyjo")]
-position = Vector2(364, 714)
+position = Vector2(366, 708)
 
 [node name="Sprite2D" parent="Lava" index="0"]
-position = Vector2(-155.092, 0.000561432)
-scale = Vector2(1.125, 5.45914)
+position = Vector2(-157.094, 0.00056868)
+scale = Vector2(1.125, 5.52171)
 
 [node name="Sprite2D2" parent="Lava" index="2"]
-position = Vector2(-154, -4.52995e-06)
-scale = Vector2(0.290429, 1)
+position = Vector2(-156, -4.52995e-06)
+scale = Vector2(0.293729, 1)
 
 [node name="PiecePlacedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_56yrn")
@@ -136,29 +136,8 @@ disable_3d = true
 transparent_bg = true
 size = Vector2i(156, 156)
 
-[node name="FireNode" parent="." instance=ExtResource("9_yisvt")]
-process_mode = 3
-position = Vector2(65, 685)
-
-[node name="FireNode2" parent="." instance=ExtResource("9_yisvt")]
-process_mode = 3
-position = Vector2(121, 683)
-
-[node name="FireNode3" parent="." instance=ExtResource("9_yisvt")]
-process_mode = 3
-position = Vector2(182, 680)
-
-[node name="FireNode4" parent="." instance=ExtResource("9_yisvt")]
-process_mode = 3
-position = Vector2(245, 682)
-
-[node name="FireNode5" parent="." instance=ExtResource("9_yisvt")]
-process_mode = 3
-position = Vector2(299, 680)
-
-[node name="FireNode6" parent="." instance=ExtResource("9_yisvt")]
-process_mode = 3
-position = Vector2(349, 683)
+[node name="CPUParticles2D" parent="." instance=ExtResource("9_nbjg6")]
+position = Vector2(208, 678)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(207.906, 578.888)

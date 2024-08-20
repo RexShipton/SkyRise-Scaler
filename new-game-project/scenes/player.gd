@@ -12,7 +12,7 @@ var push_force = 80.0
 @onready var death_area_2d: Area2D = $DeathArea2D
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
 @onready var die_sound: AudioStreamPlayer = $DieSound
-@onready var player_die_particles: GPUParticles2D = $PlayerDieParticles
+@onready var player_die_particles: CPUParticles2D = $CPUPlayerDieParticles
 
 
 @export var SPEED = 300.0
