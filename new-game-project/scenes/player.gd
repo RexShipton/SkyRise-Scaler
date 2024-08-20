@@ -12,6 +12,7 @@ var push_force = 80.0
 @onready var death_area_2d: Area2D = $DeathArea2D
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
 @onready var die_sound: AudioStreamPlayer = $DieSound
+@onready var player_die_particles: GPUParticles2D = $PlayerDieParticles
 
 
 @export var SPEED = 300.0
@@ -98,6 +99,7 @@ func Jump():
 	jump_available = false
 
 func Die():
+	player_die_particles.emitting = true
 	die_sound.play()
 	death_area_2d.set_deferred("monitoring", false)
 	dead = true
