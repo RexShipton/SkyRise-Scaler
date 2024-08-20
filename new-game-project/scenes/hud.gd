@@ -25,6 +25,7 @@ func game_over() -> void:
 
 func _on_game_over_main_menu_button_pressed() -> void:
 	get_tree().paused = false
+	play_click_sound()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func play_switch_sound() -> void:

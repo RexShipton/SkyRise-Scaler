@@ -115,6 +115,7 @@ shadow_filter_smooth = 1.5
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.631289, 0.621251, 0.639962, 1)
+
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true

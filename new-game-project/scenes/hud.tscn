@@ -172,5 +172,4 @@ volume_db = -15.0
 
 [connection signal="focus_entered" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="play_switch_sound"]
 [connection signal="mouse_entered" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="_on_game_over_main_menu_button_mouse_entered"]
-[connection signal="pressed" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="play_click_sound"]
 [connection signal="pressed" from="Center/GameOverPanel/MarginContainer/VBoxContainer/GameOverMainMenuButton" to="." method="_on_game_over_main_menu_button_pressed"]
