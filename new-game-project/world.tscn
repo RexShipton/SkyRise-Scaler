@@ -93,16 +93,16 @@ position = Vector2(87, 601)
 [node name="itemManager" type="Node2D" parent="."]
 
 [node name="RigidBody2D" parent="itemManager" instance=ExtResource("6_7v22v")]
-position = Vector2(119, 551)
+position = Vector2(131, 595)
 
 [node name="RigidBody2D2" parent="itemManager" instance=ExtResource("6_7v22v")]
-position = Vector2(139, 378)
+position = Vector2(212, 594)
 
 [node name="RigidBody2D3" parent="itemManager" instance=ExtResource("6_7v22v")]
 position = Vector2(180, 593)
 
 [node name="RigidBody2D4" parent="itemManager" instance=ExtResource("6_7v22v")]
-position = Vector2(163, 167)
+position = Vector2(280, 595)
 
 [node name="Lava" parent="." instance=ExtResource("7_vbyjo")]
 position = Vector2(364, 714)
